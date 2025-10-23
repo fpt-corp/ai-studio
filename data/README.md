@@ -52,7 +52,7 @@
 ```
 
 **Sample Dataset:**
-[Alpaca Samples](https://github.com/fpt-corp/ai-studio-samples/tree/main/sample-datasets/alpaca)
+[Alpaca Samples](./alpaca/)
 
 **Supported file formats:** `.csv`, `.json`, `.jsonlines`, `.zip`, `.parquet`
 
@@ -118,7 +118,7 @@ Each sample should start with **human** message, followed by **gpt** message.
 ```
 
 **Sample Dataset:**
-[ShareGPT Samples](https://github.com/fpt-corp/ai-studio-samples/tree/main/sample-datasets/sharegpt)
+[ShareGPT Samples](./sharegpt)
 
 **Supported file formats:** `.json`, `.jsonlines`, `.zip`, `.parquet`
 
@@ -188,7 +188,7 @@ ShareGPT_DPO contains **conversation samples with ranked responses** (chosen vs 
 ```
 
 **Sample Dataset:**
-[ShareGPT DPO Samples](https://github.com/fpt-corp/ai-studio-samples/tree/main/sample-datasets/sharegpt-dpo)
+[ShareGPT DPO Samples](./sharegpt-dpo)
 
 **Supported file formats:** `.json`, `.jsonlines`, `.zip`, `.parquet`
 
@@ -241,7 +241,7 @@ The structure includes:
 
 
 **Sample Dataset:**
-[ShareGPT Image Samples](https://github.com/fpt-corp/ai-studio-samples/tree/main/sample-datasets/sharegpt-image)
+[ShareGPT Image Samples](./sharegpt-image)
 
 **Supported file formats:** `.zip`, `.parquet`
 
@@ -275,6 +275,6 @@ The structure includes:
 ```
 
 **Sample Dataset:**
-[Corpus Samples](https://github.com/fpt-corp/ai-studio-samples/tree/main/sample-datasets/corpus)
+[Corpus Samples](./corpus)
 
 **Supported file formats:** `.txt`, `.json`, `.jsonlines`, `.zip`, `.parquet`

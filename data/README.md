@@ -122,6 +122,7 @@ Each sample should start with **human** message, followed by **gpt** message.
 
 **Supported file formats:** `.json`, `.jsonlines`, `.zip`, `.parquet`
 
+---
 
 #### 2.2 Trainer = DPO
 

@@ -14,7 +14,7 @@
 
 <!-- ## Why FPT AI Studio? -->
 
-<!-- ## Supported Models
+## Supported Models
 | Base model | Model family | Model type | Model size | Learning stage |
 |-------------|---------------|-------------|-------------|----------------|
 | deepseek-ai/DeepSeek-R1-Distill-Llama-70B | DeepSeek | LLM | 70B | Instruction-tuned |
@@ -23,14 +23,15 @@
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-14B | DeepSeek | LLM | 14B | Instruction-tuned |
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-32B | DeepSeek | LLM | 32B | Instruction-tuned |
 | deepseek-ai/DeepSeek-R1-Distill-Qwen-7B | DeepSeek | LLM | 7B | Instruction-tuned |
-| google/gemma-3-12b-it | Gemma | LLM | 2B | Instruction-tuned |
-| google/gemma-3-12b-pt | Gemma | LLM | 2B | Pre-trained |
+| google/gemma-3-12b-it | Gemma | VLM | 12B | Instruction-tuned |
+| google/gemma-3-12b-pt | Gemma | VLM | 12B | Pre-trained |
 | google/gemma-3-1b-it | Gemma | LLM | 1B | Instruction-tuned |
 | google/gemma-3-1b-pt | Gemma | LLM | 1B | Pre-trained |
-| google/gemma-3-27b-it | Gemma | LLM | 27B | Instruction-tuned |
-| google/gemma-3-27b-pt | Gemma | LLM | 27B | Pre-trained |
-| google/gemma-3-4b-it | Gemma | LLM | 4B | Instruction-tuned |
-| google/medgemma-27b-text-it | Gemma | LLM (Medical) | 27B | Instruction-tuned |
+| google/gemma-3-27b-it | Gemma | VLM | 27B | Instruction-tuned |
+| google/gemma-3-27b-pt | Gemma | VLM | 27B | Pre-trained |
+| google/gemma-3-4b-it | Gemma | VLM | 4B | Instruction-tuned |
+| google/gemma-3-4b-pt | Gemma | VLM | 4B | Pre-trained |
+| google/medgemma-27b-text-it | Gemma | LLM | 27B | Instruction-tuned |
 | meta-llama/Llama-3.1-70B | Llama | LLM | 70B | Pre-trained |
 | meta-llama/Llama-3.1-70B-Instruct | Llama | LLM | 70B | Instruction-tuned |
 | meta-llama/Llama-3.1-8B | Llama | LLM | 8B | Pre-trained |
@@ -40,8 +41,8 @@
 | meta-llama/Llama-3.2-3B | Llama | LLM | 3B | Pre-trained |
 | meta-llama/Llama-3.2-3B-Instruct | Llama | LLM | 3B | Instruction-tuned |
 | meta-llama/Llama-3.3-70B-Instruct | Llama | LLM | 70B | Instruction-tuned |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 | Mistral | MoE LLM | 8x7B | Instruction-tuned |
-| mistralai/Mixtral-8x7B-v0.1 | Mistral | MoE LLM | 8x7B | Pre-trained |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 | Mistral | LLM | 47B | Instruction-tuned |
+| mistralai/Mixtral-8x7B-v0.1 | Mistral | LLM | 47B | Pre-trained |
 | Qwen/Qwen2-0.5B | Qwen | LLM | 0.5B | Pre-trained |
 | Qwen/Qwen2-0.5B-Instruct | Qwen | LLM | 0.5B | Instruction-tuned |
 | Qwen/Qwen2-1.5B | Qwen | LLM | 1.5B | Pre-trained |
@@ -74,16 +75,25 @@
 | Qwen/Qwen2.5-VL-3B-Instruct | Qwen | VLM | 3B | Instruction-tuned |
 | Qwen/Qwen2.5-VL-72B-Instruct | Qwen | VLM | 72B | Instruction-tuned |
 | Qwen/Qwen2.5-VL-7B-Instruct | Qwen | VLM | 7B | Instruction-tuned |
-| Qwen/Qwen3-0.6B | Qwen | LLM | 0.6B | Pre-trained |
-| Qwen/Qwen3-1.7B | Qwen | LLM | 1.7B | Pre-trained |
-| Qwen/Qwen3-14B | Qwen | LLM | 14B | Pre-trained |
-| Qwen/Qwen3-30B-A3B | Qwen | LLM | 30B | Pre-trained |
-| Qwen/Qwen3-32B | Qwen | LLM | 32B | Pre-trained |
-| Qwen/Qwen3-4B | Qwen | LLM | 4B | Pre-trained |
-| Qwen/Qwen3-8B | Qwen | LLM | 8B | Pre-trained |
+| Qwen/Qwen3-0.6B | Qwen | LLM | 0.6B | Instruction-tuned |
+| Qwen/Qwen3-1.7B | Qwen | LLM | 1.7B | Instruction-tuned |
+| Qwen/Qwen3-14B | Qwen | LLM | 14B | Instruction-tuned |
+| Qwen/Qwen3-30B-A3B | Qwen | LLM | 30B | Instruction-tuned |
+| Qwen/Qwen3-32B | Qwen | LLM | 32B | Instruction-tuned |
+| Qwen/Qwen3-4B | Qwen | LLM | 4B | Instruction-tuned |
+| Qwen/Qwen3-8B | Qwen | LLM | 8B | Instruction-tuned |
+| unsloth/gpt-oss-120b-BF16 | GPT | LLM | 120B | Instruction-tuned |
+| openai/gpt-oss-20b | GPT | LLM | 20B | Instruction-tuned |
+| ibm-granite/granite-3.3-8b-instruct | Granite | LLM | 8B | Instruction-tuned |
+| OpenGVLab/InternVL3-8B-hf | InternVL | VLM | 8B | Instruction-tuned |
+| OpenGVLab/InternVL3-38B-hf | InternVL | VLM | 38B | Instruction-tuned |
+| OpenGVLab/InternVL3-2B-hf | InternVL | VLM | 2B | Instruction-tuned |
+| OpenGVLab/InternVL3-1B-hf | InternVL | VLM | 1B | Instruction-tuned |
+| OpenGVLab/InternVL3-14B-hf | InternVL | VLM | 14B | Instruction-tuned |
+| Qwen/Qwen3-4B-Instruct-2507 | Qwen | LLM | 4B | Instruction-tuned |
 
 **Private Model:**  
-If you want to upload your models, please contact us or follow the guide to upload model through SDK. -->
+If you want to upload your models, please contact us or follow the guide to upload model through SDK.
 
 ## Learn More
 

@@ -1,4 +1,7 @@
-![logo](./assets/logo.png)
+<p align="center">
+  <img src="./assets/logo.png" alt="logo" width="400"/>
+</p>
+
 # FPT AI Studio
 
 ## What You Can Do

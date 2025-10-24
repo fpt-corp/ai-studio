@@ -1,10 +1,14 @@
 # Interactive Sessions
 
+---
+
+## Quick Start
+
 After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](https://ai.fptcloud.com/) or [https://ai.fptcloud.jp/](https://ai.fptcloud.jp/), follow the instruction below:
 
 ---
 
-## Step 1: Add credit to account
+### Step 1: Add credit to account
 
 * Select **Billing** in the **Sidemenu**.
 * Click **Add Credit** button and enter an amount and payment information to complete.
@@ -14,7 +18,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-## Step 2: Create session
+### Step 2: Create session
 
 * Select **Model Testing** in the **Sidemenu**, and navigate to **Interactive Sessions**.
 * Click the button **Create New Session** and configure pipeline deployment.
@@ -23,7 +27,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-## Step 3: Manage session
+### Step 3: Manage session
 
 * The session list created successfully displays the **Interactive Sessions** page.
 * In the **Actions** column, you can **run**, **cancel**, and **delete** sessions to manage effectively.
@@ -32,7 +36,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-## Step 4: Evaluation model
+### Step 4: Evaluation model
 
 * Open **Session list**.
 * In the **Name** column, click a session you want to chat with the model.
@@ -42,7 +46,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-## Step 5: Integrate model
+### Step 5: Integrate model
 
 * Open **Session list**.1
 * In the **Name** column, click a session you want to chat with the model.

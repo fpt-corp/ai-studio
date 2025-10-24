@@ -2,12 +2,14 @@
 
 ---
 
+## Quick Start
+
 After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](https://ai.fptcloud.com/) or  
 [https://ai.fptcloud.jp/](https://ai.fptcloud.jp/), follow the instruction below:
 
 ---
 
-## Step 1: Add credit to account
+### Step 1: Add credit to account
 
 - Select **Billing** in the Sidemenu  
 - Click **Add Credit** button and enter an amount and payment information to complete.  
@@ -22,7 +24,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-## Step 2: Create pipeline
+### Step 2: Create pipeline
 
 - Select **Model Fine-tuning** in the Sidemenu  
 - Click the button **Create New Pipeline** and configure pipeline deployment.  
@@ -31,7 +33,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-## Step 3: Manage pipeline
+### Step 3: Manage pipeline
 
 * The pipeline list created successfully displays the **Fine-tuning Pipelines** page.
 * In the **Actions** column, you can start, cancel, edit and delete pipelines to manage effectively.
@@ -42,7 +44,7 @@ After signing in to the FPT AI Factory Portal at [https://ai.fptcloud.com/](http
 
 ---
 
-# Step 4: Monitor and Evaluate
+### Step 4: Monitor and Evaluate
 
 * Access **Execution details**, navigate to tab **Model Metrics** to monitor during the fine-tuning process and evaluate model after this process.
 * Navigate to tab **Logs** to track fine-tuning processes, events, and system outputs in real time.

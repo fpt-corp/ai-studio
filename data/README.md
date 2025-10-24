@@ -14,6 +14,45 @@
 
 ---
 
+### Samples datasets
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Data Format</th>
+      <th>Filename</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="6"><b>Alpaca</td><td>alpaca/alpaca_train.json</td><td>69,997</td></tr>
+    <tr><td>alpaca/alpaca_eval.json</td><td>14,999</td></tr>
+    <tr><td>alpaca/alpaca_test.json</td><td>15,000</td></tr>
+    <tr><td>alpaca/alpaca_train_mini.json</td><td>500</td></tr>
+    <tr><td>alpaca/alpaca_eval_mini.json</td><td>100</td></tr>
+    <tr><td>alpaca/alpaca_test_mini.json</td><td>100</td></tr>
+    <tr><td rowspan="6"><b>ShareGPT (SFT)</td><td>sharegpt/sharegpt_chat_train.json</td><td>7,876</td></tr>
+    <tr><td>sharegpt/sharegpt_chat_val.json</td><td>984</td></tr>
+    <tr><td>sharegpt/sharegpt_chat_test.json</td><td>986</td></tr>
+    <tr><td>sharegpt/sharegpt_chat_train_mini.json</td><td>500</td></tr>
+    <tr><td>sharegpt/sharegpt_chat_val_mini.json</td><td>100</td></tr>
+    <tr><td>sharegpt/sharegpt_chat_test_mini.json</td><td>100</td></tr>
+    <tr><td rowspan="4"><b>Corpus</td><td>corpus/corpus_wiki_en_train.json</td><td>10,000</td></tr>
+    <tr><td>corpus/corpus_wiki_en_val.json</td><td>500</td></tr>
+    <tr><td>corpus/corpus_wiki_en_train_mini.json</td><td>500</td></tr>
+    <tr><td>corpus/corpus_wiki_en_val_mini.json</td><td>100</td></tr>
+    <tr><td rowspan="4"><b>ShareGPT (DPO)</td><td>sharegpt-dpo/dpo_agrilla_en_train_sharegpt.json</td><td>8,000</td></tr>
+    <tr><td>sharegpt-dpo/dpo_agrilla_en_val_sharegpt.json</td><td>500</td></tr>
+    <tr><td>sharegpt-dpo/dpo_agrilla_en_train_sharegpt_mini.json</td><td>500</td></tr>
+    <tr><td>sharegpt-dpo/dpo_agrilla_en_val_sharegpt_mini.json</td><td>100</td></tr>
+    <tr><td rowspan="3"><b>ShareGPT_Image</td><td>sharegpt-image/train.zip</td><td>1000</td></tr>
+    <tr><td>sharegpt-image/val.zip</td><td>100</td></tr>
+    <tr><td>sharegpt-image/test.zip</td><td>100</td></tr>
+  </tbody>
+</table>
+
+---
+
 ### 1. **Alpaca**
 
 **Alpaca** uses a very simple structure to fine-tune the model with Instruction-following format with input, output pairs for **supervised fine-tuning** tasks. The basic structure includes:

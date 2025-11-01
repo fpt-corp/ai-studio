@@ -141,12 +141,12 @@ After training, the model's performance was evaluated to ensure it met the requi
 * **Result**:
     | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
     |------------------|--------------|----------|----------|----------|-----------|-------------|
-    | **Finetuned Qwen3-4B-Instruct-2507** | 0.251313     | 0.047182 | 0.195477 | 0.150714 | 0.190766 | 0.190766    |
-    | **Base Qwen3-4B-Instruct-2507**      | 0.108974     | 0.003007 | 0.016630 | 0.005608 | 0.015950 | 0.014719    |
+    | **Finetuned Qwen3-4B-Instruct-2507** | 0.760934     | 0.473482 | 0.673969 | 0.574255 | 0.66407 | 0.66407    |
+    | **Base Qwen3-4B-Instruct-2507**      | 0.11244     | 0.005657 | 0.022736 | 0.009741 | 0.021809 | 0.020414    |
 
     * The fine-tuned Qwen3 model shows a significant improvement over the base model across all evaluation metrics.
-    * BLEU increased from 0.003 to 0.047, and ROUGE scores improved roughly 10x, indicating that the fine-tuned model generates responses much closer to the reference outputs.
-    * The fuzzy match score also rose from 0.11 to 0.25, confirming better semantic alignment and output consistency after fine-tuning.
+    * BLEU increased from 0.005 to 0.47, and ROUGE scores improved roughly 30x, indicating that the fine-tuned model generates responses much closer to the reference outputs.
+    * The fuzzy match score also rose from 0.11 to 0.76, confirming better semantic alignment and output consistency after fine-tuning.
 
 ## 5. Model Deployment
 

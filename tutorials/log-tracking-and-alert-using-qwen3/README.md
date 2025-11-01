@@ -2,11 +2,46 @@
 
 ## Overview
 
-This project demonstrates how to use a LLM to analyze system logs in real time, detect risk score or security risks, and automatically generate alerts for users. Specifically, a fine-tuned **Qwen3-4B-Instruct-2507** model is employed to interpret log data, evaluate potential security threats, and produce concise, actionable summaries.
+This project showcases how a Large Language Model (LLM) can be leveraged to **analyze system logs in real time**, **assess risk scores or security threats**, and **automatically generate user alerts**. The workflow centers around a fine-tuned **Qwen3-4B-Instruct-2507** model that interprets log data, identifies potential issues, and produces concise, actionable summaries.
 
-The proposed workflow encompasses the complete development pipeline, including **data preparation**, **synthetic data generation** using a larger foundation model, **fine-tuning**, **evaluation**, **model serving**, and **user interface demonstration** through a Streamlit-based application. All fine-tuning, evaluation, and deployment processes are fully implemented using **FPT AI Studio**.
+We utilize **FPT AI Studio** to streamline key stages of model development and evaluation:
 
-This integrated pipeline from data construction to deployment and application integration illustrates the practical potential of adapting compact, efficient language models for domain-specific tasks. The results demonstrate how targeted fine-tuning can enhance the performance of smaller LLMs in specialized log analysis and risk detection scenarios.
+* **[Model Fine-tuning](https://fptcloud.com/en/documents/model-fine-tuning/?doc=quick-start):** train the **Qwen3-4B-Instruct-2507** model for the log analysis task.
+* **[Interactive Session](https://fptcloud.com/en/documents/model-testing-interactive-sessions/?doc=quick-start):** instantly test and compare model performance before and after fine-tuning, and deploy the fine-tuned model as an API for seamless integration into the demo application.
+* **[[Test Jobs](https://fptcloud.com/en/documents/model-testing-test-jobs/?doc=step-by-step):** evaluate the model’s performance pre- and post-fine-tuning on a designated test set using multiple NLP metrics.
+
+In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
+
+```mermaid
+flowchart LR
+  %% ==== Style definitions ====
+  classDef local fill:#e8f4fd,stroke:#0366d6,stroke-width:2px,color:#000,font-weight:bold;
+  classDef studio fill:#fff5e6,stroke:#ff9900,stroke-width:2px,color:#000,font-weight:bold;
+  classDef neutral fill:#f8f9fa,stroke:#ccc,stroke-width:1px,color:#333;
+
+  %% ==== Columns ====
+  subgraph L["🏠 Local Environment"]
+    A1["1️⃣ Data Preparation<br/>- Download raw logs<br/>- Chunk raw files"]:::local
+    A2["2️⃣ Synthetic Data Generation<br/>- Teacher model: GPT-4o-mini<br/>- Preprocess & split data"]:::local
+    A3["6️⃣ Demo Application<br/>Real-time log analysis & alerting"]:::local
+  end
+
+  subgraph R["☁️ FPT AI Studio Platform"]
+    B2["3️⃣ Model Training <br/>- Use Model Fine-tuning<br/>- Fine-tune Qwen3-4B-Instruct-2507"]:::studio
+    B3["4️⃣ Model Evaluation <br/>- Use Test Jobs<br/>- Evaluate with NLP metrics"]:::studio
+    B5["5️⃣ Model Deployment <br/>- Use Interactive Session<br/>- Deploy model → API"]:::studio
+  end
+
+  %% ==== Flow between columns ====
+  A1 --> A2
+  A2 --> B2
+  B2 --> B3
+  B3 --> B5
+
+  B5 -->|API endpoint| A3
+  A3 -->|Send prompt with logs| B5
+  B5 -->|Return AI response | A3
+```
 
 ## Pipeline
 
@@ -14,7 +49,7 @@ The end-to-end pipeline for this project can be broken down into the following s
 
 1. **Data Preparation**: Downloading and preprocessing log data from a public repository ([loghub2.0](https://github.com/logpai/loghub-2.0)).
 2. **Synthetic Data Generation**: Using a teacher model (gpt-4o-mini) to generate high-quality training data from the raw logs.
-3. **Model Training**: Fine-tuning the [Qwen/Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) model on the synthesized dataset using the **FPT AI Studio platform**.
+3. **Model Training**: Fine-tuning the [Qwen/Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) model on the synthesized dataset using **Model Fine-tuning** in **FPT AI Studio platform**.
 4. **Model Evaluation**: Assessing the performance of the fine-tuned model with **Test Jobs**.
 5. **Model Deployment**: Deploying the trained model as an API endpoint on FPT AI Studio for inference with **Interactive Session**.
 6. **Demo Application**: A Streamlit dashboard that ingests simulated log data, calls the deployed model for analysis, and visualizes the results in real-time.
@@ -129,14 +164,14 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
         "zero_stage": 1
     } 
     ```
-* **Step-by-step**:
+<!-- * **Step-by-step**: -->
 
 
 ## 4. Model Evaluation
 
 After training, the model's performance was evaluated to ensure it met the required accuracy and efficiency. We use **FPT AI Studio's Test Jobs** with NLP metrics to evaluate the model on the test set in order to compare the model before and after fine-tuning.
 
-* **Step-by-step**:
+<!-- * **Step-by-step**: -->
 
 * **Result**:
     | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
@@ -152,7 +187,7 @@ After training, the model's performance was evaluated to ensure it met the requi
 
 The fine-tuned model was deployed on **FPT AI Studio's Interactive Session**. This made the model accessible via an API endpoint, allowing our Streamlit application to send log data and receive analysis results in real-time. In addition, we can chat directly on the **Interactive Session** interface.
 
-* **Step-by-step**:
+<!-- * **Step-by-step**: -->
 
 ## 6. Demo Application
 

@@ -8,7 +8,7 @@ We utilize **FPT AI Studio** to streamline key stages of model development and e
 
 * **[Model Fine-tuning](https://fptcloud.com/en/documents/model-fine-tuning/?doc=quick-start):** train the **Qwen3-4B-Instruct-2507** model for the log analysis task.
 * **[Interactive Session](https://fptcloud.com/en/documents/model-testing-interactive-sessions/?doc=quick-start):** instantly test and compare model performance before and after fine-tuning, and deploy the fine-tuned model as an API for seamless integration into the demo application.
-* **[[Test Jobs](https://fptcloud.com/en/documents/model-testing-test-jobs/?doc=step-by-step):** evaluate the model’s performance pre- and post-fine-tuning on a designated test set using multiple NLP metrics.
+* **[Test Jobs](https://fptcloud.com/en/documents/model-testing-test-jobs/?doc=step-by-step):** evaluate the model’s performance pre- and post-fine-tuning on a designated test set using multiple NLP metrics.
 
 In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
 

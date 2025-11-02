@@ -108,7 +108,7 @@ To train our smaller model effectively, we needed a labeled dataset that identif
 
 ## 3. Model Training on FPT AI Studio
 
-With our synthetic dataset ready, the next step was to fine-tune a smaller, more efficient model that could perform the log analysis task in a real-time application.
+With our synthetic dataset ready, the next step was to fine-tune a smaller, more efficient model that could perform the log analysis task in a real-time application. We fine-tuned the model using the LoRA technique.
 
 * **Model**: [Qwen/Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507).
 * **Data**: The synthetically generated dataset: [data/final_data/json_analysis](./data/final_data/json_analysis)
@@ -164,6 +164,8 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
         "zero_stage": 1
     } 
     ```
+
+* **Infrastructure**: We trained the model on **1 H100 GPU**, leveraging **FlashAttention 2** and **Liger kernels** to accelerate the training process. The global batch size was set to 64.
 <!-- * **Step-by-step**: -->
 
 

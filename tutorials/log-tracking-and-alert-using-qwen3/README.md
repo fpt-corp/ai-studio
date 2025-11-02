@@ -27,7 +27,7 @@ flowchart LR
   end
 
   subgraph R["☁️ FPT AI Studio Platform"]
-    B2["3️⃣ Model Training <br/>- Use Model Fine-tuning<br/>- Fine-tune Qwen3-4B-Instruct-2507"]:::studio
+    B2["3️⃣ Model Training <br/>- Use Model Fine-tuning, Data Hub, Model Hub<br/>- Fine-tune Qwen3-4B-Instruct-2507"]:::studio
     B3["4️⃣ Model Evaluation <br/>- Use Test Jobs<br/>- Evaluate with NLP metrics"]:::studio
     B5["5️⃣ Model Deployment <br/>- Use Interactive Session<br/>- Deploy model → API"]:::studio
   end
@@ -50,6 +50,7 @@ The end-to-end pipeline for this project can be broken down into the following s
 1. **Data Preparation**: Downloading and preprocessing log data from a public repository ([loghub2.0](https://github.com/logpai/loghub-2.0)).
 2. **Synthetic Data Generation**: Using a teacher model (gpt-4o-mini) to generate high-quality training data from the raw logs.
 3. **Model Training**: Fine-tuning the [Qwen/Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) model on the synthesized dataset using **Model Fine-tuning** in **FPT AI Studio platform**.
+In this step, we use **Data Hub** to easily manage training data and **Model Hub** to manage different versions of trained models.
 4. **Model Evaluation**: Assessing the performance of the fine-tuned model with **Test Jobs**.
 5. **Model Deployment**: Deploying the trained model as an API endpoint on FPT AI Studio for inference with **Interactive Session**.
 6. **Demo Application**: A Streamlit dashboard that ingests simulated log data, calls the deployed model for analysis, and visualizes the results in real-time.
@@ -116,6 +117,8 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * Val set: 100 samples
     * Test set: 100 samples
 
+    The data is uploaded to **Data Hub** for management.
+
     For log-related tasks, the context length is typically very long. Based on our data distribution analysis, we set **max_sequence_length = 8192** during training.
     ![number_of_tokens_distribution](./images/train_json_token_distribution.png)
     
@@ -166,6 +169,9 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     ```
 
 * **Infrastructure**: We trained the model on **1 H100 GPU**, leveraging **FlashAttention 2** and **Liger kernels** to accelerate the training process. The global batch size was set to 64.
+
+* The model, after being trained, is saved in the **Private Model** section of the **Model Hub**. Users **can download** it or use it **directly with other services** such as Interactive Session or Test Jobs.
+
 <!-- * **Step-by-step**: -->
 
 

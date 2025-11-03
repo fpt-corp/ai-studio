@@ -25,8 +25,9 @@ LOG_FILE = "./src/Apache_full.log"
 BATCH_SIZE = 50
 BATCH_INTERVAL = 30
 LOG_QUEUE = queue.Queue()
-API_KEY = os.getenv("API_KEY", "EMPTY")
-BASE_URL = os.getenv("BASE_URL")
+API_KEY = os.getenv("TOKEN", "EMPTY")
+BASE_URL = os.getenv("ENDPOINT_URL", "").split("/chat", 1)[0]
+MODEL = os.getenv("MODEL", "")
 
 try:
     client = OpenAI(
@@ -38,12 +39,15 @@ except Exception as e:
     st.stop()
 
 if "model_name" not in st.session_state:
-    try:
-        models = client.models.list()
-        model_name = models.data[0].id
-    except Exception as e:
-        st.error(f"Unable to connect to model. Please check API server. Error: {e}")
-        st.stop()
+    if len(MODEL) != 0:
+        model_name = MODEL
+    else:
+        try:
+            models = client.models.list()
+            model_name = models.data[0].id
+        except Exception as e:
+            st.error(f"Unable to connect to model. Please check API server. Error: {e}")
+            st.stop()
 
 shared_data = {
     "logs": [],

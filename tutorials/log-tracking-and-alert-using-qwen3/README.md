@@ -244,8 +244,9 @@ To run this demo on your local machine, follow these steps:
 3.  **Set up environment variables:**
     You will need to configure the following environment variables in `scripts/run_app.sh`:
     ```
-    export API_KEY="YOUR_FPT_AI_STUDIO_API_KEY"
-    export BASE_URL="YOUR_FPT_AI_STUDIO_BASE_URL"
+    export TOKEN="YOUR_FPT_AI_STUDIO_TOKEN"
+    export ENDPOINT_URL="YOUR_FPT_AI_STUDIO_ENDPOINT"
+    export MODEL="YOUR_FPT_AI_STUDIO_MODEL"
     ```
 
 4.  **Place the log file:**

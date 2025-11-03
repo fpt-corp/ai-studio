@@ -186,6 +186,7 @@ After training, the model's performance was evaluated to ensure it met the requi
 ## 5. Model Deployment
 
 The fine-tuned model was deployed on **FPT AI Studio's Interactive Session**. This made the model accessible via an API endpoint, allowing our Streamlit application to send log data and receive analysis results in real-time. In addition, we can chat directly on the **Interactive Session** interface.
+![interactive_session](./images/interactive_session.png)
 
 <!-- * **Step-by-step**: -->
 

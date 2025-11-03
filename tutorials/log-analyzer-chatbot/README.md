@@ -90,7 +90,9 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * Val set: 500 samples
     * Test set: 500 samples
 
-    The data is uploaded to **Data Hub** for management.
+    The data is uploaded to **Data Hub** for management. For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path.
+    ![datahub](./images/chatbot_datahub.png)
+
 
     For log-related tasks, the context length is typically very long. Based on our data distribution analysis, we set **max_sequence_length = 8192** during training.
     ![number_of_tokens_distribution](./images/train_no_json_token_distribution.png)
@@ -141,7 +143,23 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     }
     ```
 * **Infrastructure**: We trained the model on **4 H100 GPUs**, leveraging **distributed data parallelism** **(ddp)** along with **FlashAttention 2** and **Liger kernels** to accelerate the training process. The global batch size was set to 64.
+
+* **Training**:
+    Create pipeline and start training.
+    ![create_pipeline](./images/chatbot_create_pipeline.png)
+
+    During the model training process, we can monitor the loss values and other related metrics in the **Model metrics** section.
+    <p align="center">
+    <img src="./images/chatbot_train_loss.png" alt="train_loss" width="45%"/>
+    <img src="./images/chatbot_eval_loss.png" alt="eval_loss" width="45%"/>
+    </p>
+
+    In addition, we can observe the system-related metrics in the **System metrics** section.
+    ![system_metric](./images/chatbot_system_metric.png)
+
+
 * The model, after being trained, is saved in the **Private Model** section of the **Model Hub**. Users **can download** it or use it **directly with other services** such as Interactive Session or Test Jobs.
+![private_model](./images/chatbot_private_model.png)
 
 <!-- * **Step-by-step**: -->
 
@@ -159,7 +177,7 @@ After training, the model's performance was evaluated to ensure it met the requi
     | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 | 0.069208    |
 
     * **All metrics increased substantially**, showing the model **effectively learned task-specific log analysis patterns**.
-    * **Fuzzy Match** increased from 0.28 to 0.49, the fine-tuned model produces responses much closer to the reference outputs, indicating stronger alignment with target phrasing.
+    * **Fuzzy Match** increased from 0.27 to 0.49, the fine-tuned model produces responses much closer to the reference outputs, indicating stronger alignment with target phrasing.
     * **BLEU** increased from 0.02 to 0.28, over 14x improvement, reflecting better lexical precision and phrase-level accuracy in responses.
     * **ROUGE** all improved notably, showing enhanced understanding of content structure and better coherence in generated summaries.
 

@@ -113,9 +113,10 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 
 * **Model**: [Qwen/Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507).
 * **Data**: The synthetically generated dataset: [data/final_data/json_analysis](./data/final_data/json_analysis)
-    * Train set: 3,584 samples
-    * Val set: 100 samples
-    * Test set: 100 samples
+    * [Train set](./data/final_data/json_analysis/train_json.json): 3,584 samples
+    * [Val set](./data/final_data/json_analysis/val_json.json): 100 samples
+    * [Test set](./data/final_data/json_analysis/test_json.json): 100 samples
+    * [Train subset](./data/final_data/json_analysis/train_json_mini.json): 1,000 samples (for demo purpose)
 
     The data is uploaded to **Data Hub** for management. We create a **Dataset** in **Dataset Management** and upload dataset to it.
     ![datahub](./images/logtrack_datahub.png)

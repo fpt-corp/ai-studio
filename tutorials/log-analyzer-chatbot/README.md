@@ -86,9 +86,10 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 
 * **Model**: [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct).
 * **Data**: The synthetically generated dataset: [data/final_data/chat](./data/final_data/chat)
-    * Train set: 8,971 samples
-    * Val set: 500 samples
-    * Test set: 500 samples
+    * [Train set](./data/final_data/chat/train_no_json.json): 8,971 samples
+    * [Val set](./data/final_data/chat/val_no_json.json): 500 samples
+    * [Test set](./data/final_data/chat/test_no_json.json): 500 samples
+    * [Train subset](./data/final_data/chat/train_no_json_mini.json): 1,000 samples (for demo purpose)
 
     The data is uploaded to **Data Hub** for management. For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path.
     ![datahub](./images/chatbot_datahub.png)

@@ -155,8 +155,8 @@ After training, the model's performance was evaluated to ensure it met the requi
 * **Result**:
     | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
     |------------------|--------------|----------|----------|----------|-----------|-------------|
-    | **Finetuned Llama-3.1-8B-Instruct** | 0.494095     | 0.283699 | 0.484102 | 0.174098 | 0.253377 | 0.449593    |
-    | **Base Llama-3.1-8B-Instruct**      | 0.275644     | 0.019524 | 0.083375 | 0.018689 | 0.063509 | 0.071095    |
+    | **Finetuned Llama-3.1-8B-Instruct** | 0.491492     | 0.28256 | 0.484142 | 0.173832 | 0.251358 | 0.449348    |
+    | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 | 0.069208    |
 
     * **All metrics increased substantially**, showing the model **effectively learned task-specific log analysis patterns**.
     * **Fuzzy Match** increased from 0.28 to 0.49, the fine-tuned model produces responses much closer to the reference outputs, indicating stronger alignment with target phrasing.

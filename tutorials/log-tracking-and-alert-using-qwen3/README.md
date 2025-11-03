@@ -149,7 +149,7 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
         "lr_warmup_ratio": 0.1,
         "max_grad_norm": 1.0,
         "max_sequence_length": 8192,
-        "merge_adapter": false,
+        "merge_adapter": true,
         "mixed_precision": "bf16",
         "number_of_checkpoints": 3,
         "optimizer": "adamw",

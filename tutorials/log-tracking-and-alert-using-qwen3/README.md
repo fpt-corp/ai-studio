@@ -117,7 +117,8 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * Val set: 100 samples
     * Test set: 100 samples
 
-    The data is uploaded to **Data Hub** for management.
+    The data is uploaded to **Data Hub** for management. We create a **Dataset** in **Dataset Management** and upload dataset to it.
+    ![datahub](./images/logtrack_datahub.png)
 
     For log-related tasks, the context length is typically very long. Based on our data distribution analysis, we set **max_sequence_length = 8192** during training.
     ![number_of_tokens_distribution](./images/train_json_token_distribution.png)
@@ -170,8 +171,21 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 
 * **Infrastructure**: We trained the model on **1 H100 GPU**, leveraging **FlashAttention 2** and **Liger kernels** to accelerate the training process. The global batch size was set to 64.
 
-* The model, after being trained, is saved in the **Private Model** section of the **Model Hub**. Users **can download** it or use it **directly with other services** such as Interactive Session or Test Jobs.
+* **Training**:
+    Create pipeline and start training.
+    ![create_pipeline](./images/logtrack_create_pipeline.png)
 
+    During the model training process, we can monitor the loss values and other related metrics in the **Model metrics** section.
+    <p align="center">
+    <img src="./images/logtrack_train_loss.png" alt="train_loss" width="45%"/>
+    <img src="./images/logtrack_eval_loss.png" alt="eval_loss" width="45%"/>
+    </p>
+
+    In addition, we can observe the system-related metrics in the **System metrics** section.
+    ![system_metric](./images/logtrack_systemmetric.png)
+
+* The model, after being trained, is saved in the **Private Model** section of the **Model Hub**. Users **can download** it or use it **directly with other services** such as Interactive Session or Test Jobs.
+![private_model](./images/logtrack_private_model.png)
 <!-- * **Step-by-step**: -->
 
 

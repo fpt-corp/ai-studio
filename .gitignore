@@ -165,4 +165,3 @@ cython_debug/
 .ipynb_checkpoints
 checkpoint/*
 mlruns
-scripts

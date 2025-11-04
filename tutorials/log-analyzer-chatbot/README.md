@@ -91,6 +91,12 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * [Test set](./data/final_data/chat/test_no_json.json): 500 samples
     * [Train subset](./data/final_data/chat/train_no_json_mini.json): 1,000 samples (for demo purpose)
 
+    | Model            | Train samples | Val samples     | Test samples  | GPUs  | Training time |
+    |------------------|--------------|----------|----------|----------|-----------|
+    | **Finetuned Llama-3.1-8B-Instruct** | 0.491492     | 0.28256 | 0.484142 | 0.173832 | 0.251358 |
+    | **Finetuned Llama-3.1-8B-Instruct (1,000 samples)** | 0.271446     | 0.02477 | 0.088311 | 0.021679 | 0.06512 |
+    | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 |
+
     The data is uploaded to **Data Hub** for management. 
     For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path. To upload data to S3, please refer to the code in: [upload_s3.py](./src/upload_s3.py)
 
@@ -171,12 +177,13 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 
 After training, the model's performance was evaluated to ensure it met the required accuracy and efficiency. We use **FPT AI Studio's Test Jobs** with NLP metrics to evaluate the model on the **test set** in order to compare the model before and after fine-tuning.
 
-<!-- * **Step-by-step**: -->
+![test-job](./images/test-job.png)
 
 * **Result**:
     | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
     |------------------|--------------|----------|----------|----------|-----------|-------------|
     | **Finetuned Llama-3.1-8B-Instruct** | 0.491492     | 0.28256 | 0.484142 | 0.173832 | 0.251358 | 0.449348    |
+    | **Finetuned Llama-3.1-8B-Instruct (1,000 samples)** | 0.271446     | 0.02477 | 0.088311 | 0.021679 | 0.06512 | 0.075644    |
     | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 | 0.069208    |
 
     * **All metrics increased substantially**, showing the model **effectively learned task-specific log analysis patterns**.

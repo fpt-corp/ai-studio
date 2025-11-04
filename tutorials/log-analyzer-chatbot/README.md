@@ -97,7 +97,7 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     ![datahub](./images/chatbot_datahub.png)
 
 
-    For log-related tasks, the context length is typically very long. Based on our data distribution analysis, we set **max_sequence_length = 8192** during training.
+    For log-related tasks, the context length is typically very long. The ideal context length to train our model should be 16k tokens, but for demo purpose, we set **max_sequence_length = 8192** for faster training.
     ![number_of_tokens_distribution](./images/train_no_json_token_distribution.png)
     
 * **Hyper-parameters**:

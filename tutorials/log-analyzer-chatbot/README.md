@@ -241,3 +241,5 @@ To run this demo on your local machine, follow these steps:
 
     **Streamlit demo results integrating the fine-tuned model:**
     ![streamlit_finetuned_model](./images/demo_llama3_fine-tuned.png)
+
+   * Guide on how to use this streamlit app here *

@@ -242,4 +242,15 @@ To run this demo on your local machine, follow these steps:
     **Streamlit demo results integrating the fine-tuned model:**
     ![streamlit_finetuned_model](./images/demo_llama3_fine-tuned.png)
 
-   * Guide on how to use this streamlit app here *
+    **Step-by-Step Instructions**
+
+    1. **Step 1:** Paste your log data into the **“Paste the log content here”** box in the sidebar.
+    (You should paste the 50-150 lines of log.)
+    2. **Step 2:** Choose the desired analysis task:
+
+    * ✂️ **Summarize Log**: generate a concise summary of the log.
+    * 🔍 **Find Root Cause**: identify the root cause of errors or incidents.
+    * 🧩 **Find Patterns**: detect patterns or recurring behaviors in the log.
+    3. **Step 3:** The chatbot will automatically send the request to the model and stream the response in real time.
+    4. **Step 4:** You can continue chatting with the bot by typing new questions in the input box.
+    5. **Step 5:** Click **New Chat** in the sidebar to clear all messages and start a new session.

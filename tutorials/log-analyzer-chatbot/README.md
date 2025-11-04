@@ -227,11 +227,11 @@ To run this demo on your local machine, follow these steps:
     ```
 
 3. **Set up environment variables:**
-    You will need to configure the following environment variables in `scripts/run_app.sh`:
+    Take the API endpoint and credentials on FPT AI Studio as shown on above firgure, you will need to configure the following environment variables in `scripts/run_app.sh`:
     ```
-    export TOKEN="YOUR_FPT_AI_STUDIO_TOKEN"
-    export ENDPOINT_URL="YOUR_FPT_AI_STUDIO_ENDPOINT"
-    export MODEL="YOUR_FPT_AI_STUDIO_MODEL"
+    export TOKEN="BEARER_TOKEN"
+    export ENDPOINT_URL="API_ENDPOINT"
+    export MODEL="MODEL_ID"
     ```
 
 4. **Run the Streamlit application:**

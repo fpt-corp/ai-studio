@@ -14,6 +14,8 @@ We utilize **FPT AI Studio** to streamline and automate the entire model develop
 
 In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
 
+## Pipeline
+
 ```mermaid
 flowchart LR
   %% ==== Style definitions ====
@@ -45,9 +47,7 @@ flowchart LR
   B5 -->|Return AI response | A3
 ```
 
-## Pipeline
-
-The end-to-end pipeline for this project can be broken down into the following stages:
+The end-to-end pipeline for this project as shown on the above figure includes following stages:
 
 1. **Data Preparation**: Downloading and preprocessing log data from a public repository ([loghub2.0](https://github.com/logpai/loghub-2.0)).
 2. **Synthetic Data Generation**: Using a teacher model (gpt-4o-mini) to generate high-quality training data from the raw logs.

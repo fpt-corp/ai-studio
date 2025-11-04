@@ -91,11 +91,12 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * [Test set](./data/final_data/chat/test_no_json.json): 500 samples
     * [Train subset](./data/final_data/chat/train_no_json_mini.json): 1,000 samples (for demo purpose)
 
-    | Model            | Train samples | Val samples     | Test samples  | GPUs  | Training time |
+    By **fixing the hyperparameters** and **varying only the number of training samples and GPUs**, we obtained the following results:
+    | Base Model            | Train samples | Val samples     | Test samples  | GPUs  | Training time |
     |------------------|--------------|----------|----------|----------|-----------|
-    | **Finetuned Llama-3.1-8B-Instruct** | 0.491492     | 0.28256 | 0.484142 | 0.173832 | 0.251358 |
-    | **Finetuned Llama-3.1-8B-Instruct (1,000 samples)** | 0.271446     | 0.02477 | 0.088311 | 0.021679 | 0.06512 |
-    | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 |
+    | **Llama-3.1-8B-Instruct**   | 8,971     | 500 | 500 | 4 | 2h19m55s |
+    | **Llama-3.1-8B-Instruct**   | 8,971     | 500 | 500 | 8 |  1h15m29s |
+    | **Llama-3.1-8B-Instruct**   | 1000     | 500 | 500 | 4 |  21m22s |
 
     The data is uploaded to **Data Hub** for management. 
     For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path. To upload data to S3, please refer to the code in: [upload_s3.py](./src/upload_s3.py)

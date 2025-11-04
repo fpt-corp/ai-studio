@@ -70,7 +70,7 @@ For this project, we utilized a publicly available log dataset.
 To train our smaller model effectively, we needed a labeled dataset that identified potential risks and summarized log entries. Instead of manually labeling the data, which is time-consuming and requires domain expertise, we leveraged a larger, more powerful model to generate synthetic training data.
 
 * **Teacher Model**: `gpt-4o-mini` was used for this task due to its strong reasoning and instruction-following capabilities in math and coding.
-* **Process**: Each log data chunk was processed by `gpt-4o-mini`using task-specific prompts tailored for different log analysis objectives:
+* **Process**: Each log data chunk was processed by `gpt-4o-mini`using **task-specific** prompts tailored for different log analysis objectives:
     * [Root Cause Identification](./prompts/teacher_prompts/deep_ask_why.txt)
     * [Log Summarization](./prompts/teacher_prompts/deep_summarize.txt)
     * [Pattern Detection](./prompts/teacher_prompts/deep_find_pattern.txt)

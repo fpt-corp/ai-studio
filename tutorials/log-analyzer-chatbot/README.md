@@ -91,7 +91,9 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * [Test set](./data/final_data/chat/test_no_json.json): 500 samples
     * [Train subset](./data/final_data/chat/train_no_json_mini.json): 1,000 samples (for demo purpose)
 
-    The data is uploaded to **Data Hub** for management. For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path.
+    The data is uploaded to **Data Hub** for management. 
+    For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path. To upload data to S3, please refer to the code in: [upload_s3.py](./src/upload_s3.py)
+
     ![datahub](./images/chatbot_datahub.png)
 
 

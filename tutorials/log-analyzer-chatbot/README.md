@@ -178,7 +178,7 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 
 After training, the model's performance was evaluated to ensure it met the required accuracy and efficiency. We use **FPT AI Studio's Test Jobs** with NLP metrics to evaluate the model on the **test set** in order to compare the model before and after fine-tuning.
 
-![test-job](./images/test-job.png)
+![test-job](./images/test_job-2.png)
 
 * **Result**:
     | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |

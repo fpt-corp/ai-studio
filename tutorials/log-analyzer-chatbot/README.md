@@ -204,6 +204,8 @@ The fine-tuned model was deployed on **FPT AI Studio's Interactive Session**. Th
 
 The final piece of the project is the Streamlit dashboard, which provides a user-friendly interface for visualizing the real-time log analysis.
 
+![streamlit_app](./images/streamlit_app.png)
+
 ### How it works
 
 1. **Interactive Chat Interface**

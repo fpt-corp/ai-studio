@@ -1,0 +1,10 @@
+Hãy viết một bài giới thiệu chi tiết về món [VN_FOOD] của Việt Nam. Bài viết nên bao gồm:
+
+1. **Nguồn gốc và lịch sử**: Giới thiệu xuất xứ, vùng miền, câu chuyện hoặc truyền thống liên quan.
+2. **Nguyên liệu và cách chế biến**: Mô tả các thành phần chính và phương pháp nấu ăn đặc trưng.
+3. **Hương vị và cảm nhận khi thưởng thức**: Giải thích về mùi vị, màu sắc, cách trình bày, cảm giác khi ăn.
+4. **Thành phần dinh dưỡng chi tiết**: Liệt kê calo, protein, chất béo, carbohydrate, chất xơ, vitamin và khoáng chất chính,... đồng thời giải thích tác dụng dinh dưỡng nếu có thể.
+5. **Ý nghĩa văn hóa hoặc xã hội**: Vai trò của món ăn trong đời sống người Việt, dịp lễ, hoặc phong tục.
+6. **Gợi ý thưởng thức**: Cách ăn ngon nhất, món kèm, hoặc địa điểm nổi tiếng để thử món này.
+
+Hãy viết bằng giọng văn sinh động, hấp dẫn, gần gũi, đồng thời cung cấp thông tin dinh dưỡng chính xác, có thể sử dụng trong bối cảnh tư vấn sức khỏe hoặc hội thoại về dinh dưỡng.

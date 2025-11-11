@@ -61,6 +61,26 @@ In this step, we use **Data Hub** to easily manage training data and **Model Hub
 ## 1. Data Preparation
 
 We start with a curated list of **~50 regional foods**. Next, we generate **initial food descriptions** using GPT-4o-mini. These descriptions contain key nutritional information.
+
+```python
+VN_FOODS = [
+    'Bánh bèo', 'Bánh bột lọc', 'Bánh căn', 'Bánh canh',
+    'Bánh chưng', 'Bánh cuốn', 'Bánh đúc',
+    'Bánh giò', 'Bánh khọt', 'Bánh mì', 'Bánh pía', 'Bánh tét',
+    'Bánh tráng nướng', 'Bánh xèo miền Tây', 'Bánh xèo miền Trung',
+    'Bún bò Huế', 'Bún đậu mắm tôm', 'Bún mắm', 'Bún riêu',
+    'Cá kho tộ', 'Canh chua', 'Cao lầu', 'Cháo lòng',
+    'Gỏi cuốn', 'Hủ tiếu', 'Nem chua', 'Phở', 'Xôi xéo',
+    'Bún thang', 'Bún ốc', 'Chả cá Lã Vọng', 
+    'Phở cuốn', 'Bánh tôm Hồ Tây', 'Cơm tấm',
+    'Nem rán (chả giò)', 'Bún mắm nêm', 
+    'Mì Quảng', 'Bánh lọc Huế', 'Cơm hến',
+    'Cháo lươn', 'Bún thịt nướng', 'Cá lóc nướng trui', 
+    'Bánh hỏi', 'Xôi gấc', 'Chè ba màu', 'Bánh da lợn',
+    'Lẩu mắm', 'Bánh tét lá cẩm', 'Bánh mì chả cá'
+]
+```
+
 * **Refer**: [create description code](./src/get_infor_vn_food.py), [create description prompt](./prompts/teacher_prompts/introduce_vn_food.txt)
 
 ## 2. Synthetic Data Generation with gpt-4o-mini

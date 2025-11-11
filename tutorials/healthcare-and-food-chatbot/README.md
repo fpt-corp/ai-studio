@@ -277,6 +277,7 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 * The model, after being trained, is saved in the **Private Model** section of the **Model Hub**. Users **can download** it or use it **directly with other services** such as Interactive Session or Test Jobs.
 ![private_model](./images/private_model.png)
 
+* **Training** took 21 minutes, with **GPU usage** lasting 18 minutes.
 <!-- * **Step-by-step**: -->
 
 ## 4. Model Evaluation

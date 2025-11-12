@@ -155,7 +155,10 @@ Refer: [reformat_code](./src/split_data.py)
     In addition, we can observe the system-related metrics in the **System metrics** section.
     ![system_metric](./images/system_metric.png)
 
-    Training time is 50m 52s.
+    **Training time** is **50m52s**. **The cost** of using the fine-tune model is **~$1.925**.
+    Explanation of Costs: 
+    * At **FPT AI Studio**, we charge **$2.31 per GPU-hour**. Importantly, we only charge for **actual GPU usage time** and time spent on tasks such as **model downloading, data downloading, data tokenization,** and **pushing data to the Model Hub** is **not included** in the calculation. 
+    * Please note that, for simplicity, the costs shown include the time spent on **model downloading, data downloading, data tokenization,** and **pushing data to the model hub**. In practice, since we only charge for **actual GPU usage time**, the **real cost will be lower** than the value shown.
 
 
 ## 3. Fine-tuning

@@ -187,6 +187,11 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
 
 * The model, after being trained, is saved in the **Private Model** section of the **Model Hub**. Users **can download** it or use it **directly with other services** such as Interactive Session or Test Jobs.
 ![private_model](./images/logtrack_private_model.png)
+
+* **Training time** is **2h39m56s**. **The cost** of using the fine-tune model is **~$6.16**.
+    Explanation of Costs: 
+    * At **FPT AI Studio**, we charge **$2.31 per GPU-hour**. Importantly, we only charge for **actual GPU usage time** and time spent on tasks such as **model downloading, data downloading, data tokenization,** and **pushing data to the Model Hub** is **not included** in the calculation. 
+    * Please note that, for simplicity, the costs shown include the time spent on **model downloading, data downloading, data tokenization,** and **pushing data to the model hub**. In practice, since we only charge for **actual GPU usage time**, the **real cost will be lower** than the value shown.
 <!-- * **Step-by-step**: -->
 
 

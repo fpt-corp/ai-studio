@@ -92,14 +92,21 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
     * [Train subset](./data/final_data/chat/train_no_json_mini.json): 1,000 samples (for demo purpose)
 
     By **fixing the hyperparameters** and **varying only the number of training samples and GPUs**, we obtained the following results:
-    | Base Model            | Train samples | Val samples     | Test samples  | GPUs  | Training time |
-    |------------------|--------------|----------|----------|----------|-----------|
-    | **Llama-3.1-8B-Instruct**   | 8,971     | 500 | 500 | 4 | 2h19m55s |
-    | **Llama-3.1-8B-Instruct**   | 8,971     | 500 | 500 | 8 |  1h15m29s |
-    | **Llama-3.1-8B-Instruct**   | 1000     | 500 | 500 | 4 |  21m22s |
 
-    The data is uploaded to **Data Hub** for management. 
-    For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path. To upload data to S3, please refer to the code in: [upload_s3.py](./src/upload_s3.py)
+    | **Base Model**            | **Train Samples** | **Val Samples** | **Test Samples** | **GPUs** | **Training Time** | **Our Cost <br>($2.31/GPU-hour)** |
+    | ------------------------- | ----------------- | --------------- | ---------------- | -------- | ----------------- | --------------------------------- |
+    | **Llama-3.1-8B-Instruct** | 8,971             | 500             | 500              | 4        | 2h19m55s        | $5.39                             |
+    | **Llama-3.1-8B-Instruct** | 8,971             | 500             | 500              | 8        | 1h15m29s        | $2.89                             |
+    | **Llama-3.1-8B-Instruct** | 1,000             | 500             | 500              | 4        | 21m22s           | $0.85                             |
+
+    Explanation of Costs: 
+    * At **FPT AI Studio**, we charge **$2.31 per GPU-hour**. The table above shows the estimated cost of running this tutorial. Importantly, we only charge for **actual GPU usage time** and time spent on tasks such as **model downloading, data downloading, data tokenization,** and **pushing data to the Model Hub** is **not included** in the calculation. 
+    * Please note that, for simplicity, the costs shown include the time spent on **model downloading, data downloading, data tokenization,** and **pushing data to the model hub**. In practice, since we only charge for **actual GPU usage time**, the **real cost will be lower** than the values shown in the table.
+    
+
+
+
+    The data is uploaded to **Data Hub** for management. For datasets larger than 100 MB, we first upload the data to **S3**, then create a **Connection** in **Data Hub**, and finally create a **Dataset** in **Dataset Management** that points to the corresponding S3 dataset path. To upload data to S3, please refer to the code in: [upload_s3.py](./src/upload_s3.py)
 
     ![datahub](./images/chatbot_datahub.png)
 

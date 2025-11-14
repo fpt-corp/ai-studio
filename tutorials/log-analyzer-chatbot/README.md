@@ -234,7 +234,7 @@ To run this demo on your local machine, follow these steps:
 
 1. **Clone the repository:**
     ```bash
-    git clone 
+    git clone https://github.com/fpt-corp/ai-studio.git
     cd tutorials/log-analyzer-chatbot
     ```
 

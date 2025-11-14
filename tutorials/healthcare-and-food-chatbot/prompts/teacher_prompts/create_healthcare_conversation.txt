@@ -1,0 +1,32 @@
+Dựa trên mô tả chi tiết về món ăn Việt Nam sau đây (bao gồm nguồn gốc, cách chế biến, hương vị, thành phần dinh dưỡng và ý nghĩa văn hóa,...), hãy tạo một **đoạn hội thoại tự nhiên giữa một người dùng và một assistant chuyên về dinh dưỡng và sức khỏe**.
+Mô tả món ăn:
+"""
+[INFO_VN_FOOD]
+"""
+
+Yêu cầu:
+
+1. Hội thoại dài khoảng 8–12 lượt nói (turns).
+2. Người dùng có thể hỏi về:
+   * Thông tin bất kỳ về món ăn.
+   * Giá trị dinh dưỡng của món ăn (calo, protein, chất béo, carbohydrate, vitamin, khoáng chất,...).
+   * Ảnh hưởng của món ăn tới các bệnh lý phổ biến (tiểu đường, tim mạch, béo phì, dị ứng, huyết áp, tim mạch, ung thư, mỡ máu, gan nhiễm mỡ, viêm da, mụn trứng cá,...).
+   * Gợi ý cách ăn hợp lý cho người có tình trạng sức khỏe cụ thể.
+3. Assistant phải trả lời **có cơ sở, chính xác, rõ ràng**, vừa cung cấp thông tin dinh dưỡng, vừa đưa lời khuyên hợp lý dựa trên tình trạng sức khỏe.
+4. Giữ hội thoại **tự nhiên, gần gũi**, giống như một người dùng thật sự đang hỏi và một chuyên gia trả lời, không quá cứng nhắc hay khoa học quá mức.
+5. Bao gồm ít nhất một ví dụ về cách **thay đổi khẩu phần hoặc điều chỉnh món ăn** để phù hợp với từng loại bệnh lý.
+
+Xuất kết quả dưới dạng JSON list, mỗi lượt nói là một object với key `"user"` và `"assistant"`. Ví dụ format:
+
+[
+  {
+    "user": "User hỏi câu này...",
+    "assistant": "Assistant trả lời câu này..."
+  },
+  {
+    "user": "User hỏi câu khác...",
+    "assistant": "Assistant trả lời câu khác..."
+  }
+]
+
+Bắt đầu hội thoại từ câu mở đầu của người dùng thể hiện sự tò mò hoặc quan tâm về món ăn này.

@@ -1,0 +1,28 @@
+You are a senior software engineer and log analysis expert.
+Your task is to generate a conversation between a **user** and an **AI assistant** analyzing the given log.
+
+Requirements:
+- The output must be a valid JSON array with exactly **10 objects**.  
+- Each object must have two fields:
+  - "user": a concise but meaningful question about the log
+  - "assistant": a detailed, technical answer or explanation  
+- The content should be based strictly on the provided log (do not hallucinate).  
+- The tone should resemble a real debugging conversation — helpful, precise, and professional.  
+- Use English in responses unless specified otherwise.  
+- The JSON must be syntactically valid (no comments, trailing commas, or Markdown).
+
+Example format:
+[
+  {
+    "user": "Why is there a ValueError in the log?",
+    "assistant": "The ValueError occurs because evaluation_strategy='epoch' requires eval_dataset, which is missing in the configuration."
+  },
+  {
+    "user": "...",
+    "assistant": "..."
+  }
+]
+
+Now, analyze the following log and generate the 10 Q&A pairs in the same JSON format:
+
+[LOG_CONTENT]

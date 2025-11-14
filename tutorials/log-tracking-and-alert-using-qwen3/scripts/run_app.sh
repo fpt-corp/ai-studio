@@ -1,0 +1,5 @@
+export TOKEN="YOUR_FPT_AI_STUDIO_TOKEN"
+export ENDPOINT_URL="YOUR_FPT_AI_STUDIO_ENDPOINT"
+export MODEL="YOUR_FPT_AI_STUDIO_MODEL"
+
+streamlit run src/app.py

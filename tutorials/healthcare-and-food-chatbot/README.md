@@ -15,7 +15,7 @@ We utilize **FPT AI Studio** to streamline and automate the entire model develop
 In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
 
 ## Pipeline
-![full pipeline](./images/full-pipeline.png)
+![full pipeline](./images/full-pipeline-2.png)
 
 The end-to-end pipeline for this project as shown on the above figure includes following stages:
 

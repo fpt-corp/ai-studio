@@ -15,38 +15,7 @@ We utilize **FPT AI Studio** to streamline and automate the entire model develop
 In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
 
 ## Pipeline
-
-```mermaid
-flowchart LR
-  %% ==== Style definitions ====
-  classDef local fill:#e8f4fd,stroke:#0366d6,stroke-width:2px,color:#000,font-weight:bold;
-  classDef studio fill:#fff5e6,stroke:#ff9900,stroke-width:2px,color:#000,font-weight:bold;
-  classDef neutral fill:#f8f9fa,stroke:#ccc,stroke-width:1px,color:#333;
-
-  %% ==== Columns ====
-  subgraph L["🏠 Local Environment"]
-    A1["1️⃣ Data Preparation<br/>- Collect food names"]:::local
-    A2["2️⃣ Synthetic Data Generation<br/>- Teacher model: GPT-4o-mini<br/>- Generate conversations related to healthcare & nutrition"]:::local
-    A3["6️⃣ Demo Application<br/>Chatbot Healthcare & Food"]:::local
-  end
-
-  subgraph R["☁️ FPT AI Studio Platform"]
-    B2["3️⃣ Model Training <br/>- Use Model Fine-tuning, Data Hub, Model Hub<br/>- Fine-tune Llama model"]:::studio
-    B3["4️⃣ Model Evaluation <br/>- Use Test Jobs<br/>- Evaluate with NLP metrics"]:::studio
-    B5["5️⃣ Model Deployment <br/>- Use Interactive Session<br/>- Deploy model → API"]:::studio
-  end
-
-  %% ==== Flow between columns ====
-  A1 --> A2
-  A2 --> B2
-  B2 --> B3
-  B3 --> B5
-
-  B5 -->|API endpoint| A3
-  A3 -->|Send prompt with history| B5
-  B5 -->|Return AI response | A3
-
-```
+![full pipeline](./images/full-pipeline.png)
 
 The end-to-end pipeline for this project as shown on the above figure includes following stages:
 

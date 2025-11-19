@@ -159,16 +159,18 @@ After training, the model's performance was evaluated to ensure it met the requi
 ![test-job](./images/test_job-2.png)
 
 * **Result**:
-    | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
+    <!-- | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
     |------------------|--------------|----------|----------|----------|-----------|-------------|
     | **Finetuned Llama-3.1-8B-Instruct** | 0.491492     | 0.28256 | 0.484142 | 0.173832 | 0.251358 | 0.449348    |
     | **Finetuned Llama-3.1-8B-Instruct (1,000 samples)** | 0.271446     | 0.02477 | 0.088311 | 0.021679 | 0.06512 | 0.075644    |
-    | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 | 0.069208    |
+    | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 | 0.069208    | -->
 
-    * **All metrics increased substantially**, showing the model **effectively learned task-specific log analysis patterns**.
-    * **Fuzzy Match** increased from 0.27 to 0.49, the fine-tuned model produces responses much closer to the reference outputs, indicating stronger alignment with target phrasing.
-    * **BLEU** increased from 0.02 to 0.28, over 14x improvement, reflecting better lexical precision and phrase-level accuracy in responses.
-    * **ROUGE** all improved notably, showing enhanced understanding of content structure and better coherence in generated summaries.
+    ![result](./images/77f373a1-fa2d-465b-9587-2feb84966ed8.png)
+
+    * 📈 **All metrics saw a significant boost**, demonstrating that the model has **strongly internalized task-specific log analysis patterns**.
+    * 🎯 **Fuzzy Match surged from 0.27 → 0.49**, highlighting a **much tighter alignment with target phrasing**.
+    * ✨ **BLEU jumped from 0.02 → 0.28**, signaling **notable gains in lexical precision and phrase-level accuracy**.
+    * 📘 **ROUGE metrics improved markedly**, indicating a **deeper grasp of content structure and more coherent generated summaries**.
 
 
 ## 5. Model Deployment

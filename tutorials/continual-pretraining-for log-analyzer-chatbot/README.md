@@ -187,12 +187,18 @@ After completing the continual pretraining step, we perform fine-tune of the con
 * **Infrastructure**: We trained the model on **4 H100 GPUs**, leveraging **distributed data parallelism** **(ddp)** along with **FlashAttention 2** and **Liger kernels** to accelerate the training process. The global batch size was set to 64.
 
 Similar to [Log Analyzer Chatbot](https://github.com/fpt-corp/ai-studio/tree/feature/dev-support/tutorials/log-analyzer-chatbot), we evaluate the model after fine-tuning with **Test Jobs**, the results compared with fine-tuning directly from the base model:
-| Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
+
+![result](./images/plot_revised.png)
+
+<!-- | Model            | Fuzzy Match | BLEU     | ROUGE-1  | ROUGE-2  | ROUGE-L  | ROUGE-Lsum |
 |------------------|--------------|----------|----------|----------|-----------|-------------|
 | **Base Llama-3.1-8B-Instruct**      | 0.27408     | 0.01905 | 0.08188 | 0.018422 | 0.062904 | 0.069208    |
 | **Finetuned Llama-3.1-8B-Instruct** | 0.491492     | **0.28256** | 0.484142 | 0.173832 | 0.251358 | 0.449348    |
-| **Finetuned Continual Pretrained Llama-3.1-8B-Instruct** | **0.494022**   | 0.279686 | **0.486667** | **0.174316** | **0.253998** |  **0.450784**   |
+| **Finetuned Continual Pretrained Llama-3.1-8B-Instruct** | **0.494022**   | 0.279686 | **0.486667** | **0.174316** | **0.253998** |  **0.450784**   | -->
 
+Note:
+- 🏆 **Superior Performance of Finetuned Models**: Both the **Finetuned Continual 8B** and **Finetuned 8B** models dramatically outperform the "Base 8B" model across all evaluation metrics. This highlights the critical importance of finetuning for adapting a base model to a specific task.
+- ✨ **Slight Edge for Continual Pre-training**: The **Finetuned Continual 8B** model consistently shows a slight performance advantage over the standard **Finetuned 8B** model in most metrics, including **Fuzzy Match, ROUGE-1, ROUGE-L, and ROUGE-Lsum**. While the improvements are marginal, they demonstrate the added value of continual pre-training.
 
 
 ## 4. Conclusion

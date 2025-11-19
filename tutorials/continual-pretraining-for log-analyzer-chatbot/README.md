@@ -37,40 +37,7 @@ We utilize **FPT AI Studio** to streamline and automate the entire model develop
 
 In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
 
-```mermaid
-flowchart LR
-  %% ==== Style definitions ====
-  classDef local fill:#e8f4fd,stroke:#0366d6,stroke-width:2px,color:#000,font-weight:bold;
-  classDef studio fill:#fff5e6,stroke:#ff9900,stroke-width:2px,color:#000,font-weight:bold;
-  classDef neutral fill:#f8f9fa,stroke:#ccc,stroke-width:1px,color:#333;
-
-  %% ==== Columns ====
-  subgraph L["🏠 Local Environment"]
-    A1["3️⃣ Data Preparation<br/>- Download raw logs<br/>- Chunk raw files"]:::local
-    A2["4️⃣ Synthetic Data Generation<br/>- Teacher model: GPT-4o-mini<br/>- Preprocess & split data"]:::local
-    A3["8️⃣ Demo Application<br/>Chatbot Log Analyzer"]:::local
-    A4["1️⃣ Data Preparation<br/>- Preprocess NLPLog"]:::local
-  end
-
-  subgraph R["☁️ FPT AI Studio Platform"]
-    B1["2️⃣ Model Training <br/>- Continual Pretraining Stage"]:::studio
-    B2["5️⃣ Model Training <br/>- Fine-tuning Stage"]:::studio
-    B3["6️⃣ Model Evaluation <br/>- Use Test Jobs<br/>- Evaluate with NLP metrics"]:::studio
-    B5["7️⃣ Model Deployment <br/>- Use Interactive Session<br/>- Deploy model → API"]:::studio
-  end
-
-  %% ==== Flow between columns ====
-  A1 --> A2
-  A2 --> B2
-  B2 --> B3
-  B3 --> B5
-  B1 --> B2
-  A4 --> B1
-
-  B5 -->|API endpoint| A3
-  A3 -->|Send prompt with logs| B5
-  B5 -->|Return AI response | A3
-```
+![pipeline](./images/continual-pretraining-for%20log-analyzer-chatbot.pipeline.png)
 
 ## 2. Continual Pretraining
 

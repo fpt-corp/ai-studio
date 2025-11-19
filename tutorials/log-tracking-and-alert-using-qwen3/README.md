@@ -12,36 +12,7 @@ We utilize **FPT AI Studio** to streamline key stages of model development and e
 
 In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=quick-start)** and **[Data Hub](https://fptcloud.com/en/documents/data-hub/?doc=initial-setup)** are employed for efficient storage and management of large models and datasets.
 
-```mermaid
-flowchart LR
-  %% ==== Style definitions ====
-  classDef local fill:#e8f4fd,stroke:#0366d6,stroke-width:2px,color:#000,font-weight:bold;
-  classDef studio fill:#fff5e6,stroke:#ff9900,stroke-width:2px,color:#000,font-weight:bold;
-  classDef neutral fill:#f8f9fa,stroke:#ccc,stroke-width:1px,color:#333;
-
-  %% ==== Columns ====
-  subgraph L["🏠 Local Environment"]
-    A1["1️⃣ Data Preparation<br/>- Download raw logs<br/>- Chunk raw files"]:::local
-    A2["2️⃣ Synthetic Data Generation<br/>- Teacher model: GPT-4o-mini<br/>- Preprocess & split data"]:::local
-    A3["6️⃣ Demo Application<br/>Real-time log analysis & alerting"]:::local
-  end
-
-  subgraph R["☁️ FPT AI Studio Platform"]
-    B2["3️⃣ Model Training <br/>- Use Model Fine-tuning, Data Hub, Model Hub<br/>- Fine-tune Qwen3-4B-Instruct-2507"]:::studio
-    B3["4️⃣ Model Evaluation <br/>- Use Test Jobs<br/>- Evaluate with NLP metrics"]:::studio
-    B5["5️⃣ Model Deployment <br/>- Use Interactive Session<br/>- Deploy model → API"]:::studio
-  end
-
-  %% ==== Flow between columns ====
-  A1 --> A2
-  A2 --> B2
-  B2 --> B3
-  B3 --> B5
-
-  B5 -->|API endpoint| A3
-  A3 -->|Send prompt with logs| B5
-  B5 -->|Return AI response | A3
-```
+![pipeline](./images/log-tracking-and-alert-using-qwen3.pipeline.png)
 
 ## Pipeline
 

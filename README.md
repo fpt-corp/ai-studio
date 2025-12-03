@@ -92,8 +92,8 @@
 | OpenGVLab/InternVL3-14B-hf | InternVL | VLM | 14B | Instruction-tuned |
 | Qwen/Qwen3-4B-Instruct-2507 | Qwen | LLM | 4B | Instruction-tuned |
 
-**Private Model:**  
-If you want to upload your models, please contact us or follow the guide to upload model through SDK.
+## SDK
+If you want to interact with the Model Hub using the SDK, please refer to the following guide: [Model Hub SDK Instruction](./docs/model_hub_sdk/README.md)
 
 ## Learn More
 

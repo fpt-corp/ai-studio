@@ -61,7 +61,7 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
         
     ```bash
     ### model
-    model_name_or_path: /mnt/jail/root/Qwen/Qwen2.5-32B
+    model_name_or_path: /mnt/jail/root/model/Qwen/Qwen2.5-32B
     trust_remote_code: true
 
     ### method
@@ -119,34 +119,44 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     #SBATCH --nodes=4
     #SBATCH --time=2-00:00:00
     #SBATCH --gres=gpu:8
-    #SBATCH -o training.out
-    #SBATCH -e training.err
+    #SBATCH -o training_%j.out
+    #SBATCH -e training_%j.err
     #SBATCH --ntasks=4
-    nodes=($(scontrol show hostnames $SLURM_JOB_NODELIST ) )
+    #SBATCH --ntasks-per-node=1
+    #SBATCH --cpus-per-task=16
+
+    nodes=($(scontrol show hostnames $SLURM_JOB_NODELIST))
     nodes_array=($nodes)
     head_node=${nodes_array[0]}
-    node_id=${SLURM_NODEID}
+
     head_node_ip=$(srun --nodes=1 --ntasks=1 -w "$head_node" hostname --ip-address | cut -d" " -f2)
-    echo Master Node IP: $head_node_ip
+    echo "Master Node: $head_node ($head_node_ip)"
+
     export LOGLEVEL=INFO
-    export NNODES=4
+    export NNODES=$SLURM_NNODES # 4
     export NPROC_PER_NODE=8
     export MASTER_ADDR=$head_node_ip
     export MASTER_PORT=29500
-    export NODE_RANK=$node_id
+
     export NCCL_IB_DISABLE=0
     export NCCL_SOCKET_IFNAME=^lo,docker0
-    export NCCL_TIMEOUT=180000000
     export NCCL_DEBUG=INFO
     export NCCL_BLOCKING_WAIT=1
     export NCCL_ASYNC_ERROR_HANDLING=1
+
     export FORCE_TORCHRUN=1   
 
-    source /mnt/jail/root/miniconda3/bin/activate
-    conda activate training
-    
-    cd /mnt/jail/root/LLaMA-Factory
-    srun llamafactory-cli train examples/train.yaml
+    srun bash -c '
+        source /mnt/jail/root/miniconda3/bin/activate
+        conda activate training
+        
+        echo "Node ID: $SLURM_NODEID - Hostname: $(hostname) - Master: $MASTER_ADDR"
+        
+        export NODE_RANK=$SLURM_NODEID
+        
+        cd /mnt/jail/root/LLaMA-Factory
+        llamafactory-cli train examples/train.yaml
+    '
     ```
     
 ## Run Sbatch    

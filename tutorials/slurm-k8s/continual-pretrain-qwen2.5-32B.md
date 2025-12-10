@@ -26,7 +26,7 @@
     pip uninstall -y transformer-engine flash-attn && pip uninstall -y ninja && pip install ninja && pip -v install --no-cache-dir flash-attn --no-build-isolation
 
     # Install huggingface-cli, for downloading dataset and model
-    pip install huggingface-cli
+    pip install huggingface_hub
     ```
     
 ## Prepare Dataset

@@ -1,40 +1,59 @@
 # Continual Pretraining of Qwen2.5-32B with Slurm on K8s
 
-## Create environment
-
-```bash
-python3 –m venv venv 
-source venv/bin/activate
-
-# Setup LLaMA-Factory
-git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
-cd LLaMA-Factory
-pip install -e ".[torch,metrics,deepspeed,liger-kernel]" --no-build-isolation
-
-# Install flash-attn
-pip uninstall -y transformer-engine flash-attn && pip uninstall -y ninja && pip install ninja && pip -v install --no-cache-dir flash-attn --no-build-isolation
-```
-    
-## Prepare Data
-- Edit dataset
+## Create environment (Login)
+- Install miniconda3
     ```bash
+    mkdir -p /root/miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /root/miniconda3/miniconda.sh
+    bash /root/miniconda3/miniconda.sh -b -u -p /root/miniconda3
+    rm /root/miniconda3/miniconda.sh
+    ```
+- Create conda environment
+    ```bash
+    source /root/miniconda3/bin/activate
+    conda create -n training python==3.10 -y
+    conda activate training
+    conda install pip
+    pip install --upgrade pip
+
+    # Setup LLaMA-Factory
+    cd /root
+    git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
+    cd LLaMA-Factory
+    pip install -e ".[torch,metrics,deepspeed,liger-kernel]" --no-build-isolation
+
+    # Install flash-attn
+    pip uninstall -y transformer-engine flash-attn && pip uninstall -y ninja && pip install ninja && pip -v install --no-cache-dir flash-attn --no-build-isolation
+    ```
+    
+## Prepare Dataset
+- Download dataset (Login)
+    ```bash
+    mkdir -p /root/data
+    HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download htdung167/CulturaY_vi_5GB --local-dir /root/data/CulturaY_vi_5GB --local-dir-use-symlinks False --repo-type dataset
+    ```
+    
+- Edit dataset info with the worker's path
+    ```bash
+    cd /root/LLaMA-Factory
     vi data/dataset_info.json
     ```
-- Append 2 lines to `dataset_info.json`
+- Append this line to `dataset_info.json`
     ```json
-    "culturay_vi": {"hf_hub_url": "htdung167/CulturaY_vi", "columns": {"prompt": "text"}},
-    "culturay_vi_5gb": {"hf_hub_url": "htdung167/CulturaY_vi_5GB", "columns": {"prompt": "text"}},
+    "culturay_vi_5gb": {"hf_hub_url": "/mnt/jail/root/data/CulturaY_vi_5GB", "columns": {"prompt": "text"}},
     ```
     
 ## Download Qwen2.5-32B model
     
 ```bash
-HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-dir=Qwen/Qwen2.5-32B --local-dir-use-symlinks False 
+mkdir -p /root/model
+HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-dir=/root/model/Qwen/Qwen2.5-32B --local-dir-use-symlinks False 
 ```
     
 ## LLaMA-Factory Training Config
 - Create yaml file in examples folder
     ```bash
+    cd /root/LLaMA-Factory
     vi examples/train.yaml
     ```
         
@@ -42,15 +61,15 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
         
     ```bash
     ### model
-    model_name_or_path: ./Qwen2.5-32B
+    model_name_or_path: /mnt/jail/root/Qwen/Qwen2.5-32B
     trust_remote_code: true
-    
+
     ### method
     stage: pt
     do_train: true
     finetuning_type: full
     deepspeed: examples/deepspeed/ds_z3_config.json
-    
+
     ### dataset
     dataset: culturay_vi_5gb # culturay_vi if you want to training bigger dataset (35 GB)
     cutoff_len: 8192
@@ -58,7 +77,7 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     overwrite_cache: true
     preprocessing_num_workers: 16
     dataloader_num_workers: 4
-    
+
     ### output
     output_dir: saves/pretrain_checkpoints
     logging_steps: 1
@@ -68,12 +87,12 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     overwrite_output_dir: true
     save_only_model: false
     report_to: none  # choices: [none, wandb, tensorboard, swanlab, mlflow]
-    
+
     ### train
-    per_device_train_batch_size: 1
-    gradient_accumulation_steps: 8
-    learning_rate: 1.0e-4
-    num_train_epochs: 3.0
+    per_device_train_batch_size: 8
+    gradient_accumulation_steps: 4
+    learning_rate: 2.0e-5
+    num_train_epochs: 2.0
     lr_scheduler_type: cosine
     warmup_ratio: 0.1
     bf16: true
@@ -81,24 +100,22 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     resume_from_checkpoint: null
     flash_attn: "fa2"
     enable_liger_kernel: true
-    
+
     ### eval
-    # eval_dataset: c4_demo
-    # val_size: 0.1
-    # per_device_eval_batch_size: 1
     eval_strategy: "no"
-    # eval_steps: 500
     ```
         
 ## Sbatch Config
 - Create Sbatch file
     ```bash
+    cd /root
     vi train_qwen.sbatch
     ```
 - Sbatch content
     
     ```bash
-    #!/bin/bash #SBATCH --job-name=multinode-training
+    #!/bin/bash 
+    #SBATCH --job-name=multinode-training
     #SBATCH --nodes=4
     #SBATCH --time=2-00:00:00
     #SBATCH --gres=gpu:8
@@ -124,8 +141,12 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     export NCCL_BLOCKING_WAIT=1
     export NCCL_ASYNC_ERROR_HANDLING=1
     export FORCE_TORCHRUN=1   
-    source venv/bin/activate
-    srun llamafactory-cli train train.yaml
+
+    source /mnt/jail/root/miniconda3/bin/activate
+    conda activate training
+    
+    cd /mnt/jail/root/LLaMA-Factory
+    srun llamafactory-cli train examples/train.yaml
     ```
     
 ## Run Sbatch    

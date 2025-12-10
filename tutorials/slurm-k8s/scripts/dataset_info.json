@@ -1,0 +1,8 @@
+{
+    "culturay_vi_5gb":{
+        "hf_hub_url": "/mnt/jail/root/data/CulturaY_vi_5GB", 
+        "columns": {
+            "prompt": "text"
+        }
+    }
+}

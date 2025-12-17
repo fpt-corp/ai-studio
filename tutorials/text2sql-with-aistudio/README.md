@@ -135,8 +135,10 @@ For Text2SQL, best practices typically include:
 During training, users can monitor:
 
 * Training and evaluation loss
-* Throughput and step time
+![alt text](./images/loss.png)
 * GPU utilization and memory usage
+![alt text](./images/system_metric.png)
+
 
 After training completes, the fine-tuned model is saved as a **new version** in Private Model.
 
@@ -151,40 +153,73 @@ The fine-tuned model can be deployed using **Interactive Session**, enabling:
 * Comparison between base and fine-tuned models
 * Easy integration into downstream applications
 
+![alt text](./images/int2.png)
 Example test prompt:
 
 ```
-Enable the progress bar for long queries.
+Delete all records in the `csu_fees` table where the `CampusFee` is greater than 5000 and `Year` is 2021.
 
 Schema:
-CREATE TABLE gymnast (
-        Gymnast_ID INT,
-        Floor_Exercise_Points FLOAT,
-        Pommel_Horse_Points FLOAT,
-        Rings_Points FLOAT,
-        Vault_Points FLOAT,
-        Parallel_Bars_Points FLOAT,
-        Horizontal_Bar_Points FLOAT,
-        Total_Points FLOAT,
-        Gymnast_Awards INT[], 
-        PRIMARY KEY (Gymnast_ID),
-        FOREIGN KEY (Gymnast_ID) REFERENCES people(People_ID)
+CREATE TABLE "Campuses" (
+ "Id" INTEGER PRIMARY KEY, 
+ "Campus" TEXT, 
+ "Location" TEXT, 
+ "County" TEXT, 
+ "Year" INTEGER,
+ "CampusInfo" JSON
 );
-CREATE TABLE people (
-    People_ID INT,
-    Name VARCHAR(255),
-    Age FLOAT,
-    Height FLOAT,
-    Hometown VARCHAR(255),
-    Person_Achievements MAP(VARCHAR, VARCHAR),
-    PRIMARY KEY (People_ID)
+
+CREATE TABLE "csu_fees" ( 
+ "Campus" INTEGER PRIMARY KEY, 
+ "Year" INTEGER, 
+ "CampusFee" INTEGER,
+ "FeeDetails" JSON,
+ FOREIGN KEY (Campus) REFERENCES Campuses(Id)
+);
+
+CREATE TABLE "degrees" ( 
+ "Year" INTEGER,
+ "Campus" INTEGER, 
+ "Degrees" INTEGER,
+ "DegreePrograms" JSON[],
+ PRIMARY KEY (Year, Campus),
+ FOREIGN KEY (Campus) REFERENCES Campuses(Id)
+);
+
+CREATE TABLE "discipline_enrollments" ( 
+ "Campus" INTEGER, 
+ "Discipline" INTEGER, 
+ "Year" INTEGER, 
+ "Undergraduate" INTEGER, 
+ "Graduate" INTEGER,
+ "EnrollmentDetails" JSON,
+ PRIMARY KEY (Campus, Discipline),
+ FOREIGN KEY (Campus) REFERENCES Campuses(Id)
+);
+
+CREATE TABLE "enrollments" ( 
+ "Campus" INTEGER, 
+ "Year" INTEGER, 
+ "TotalEnrollment_AY" INTEGER, 
+ "FTE_AY" INTEGER,
+ "EnrollmentStatistics" JSON,
+ PRIMARY KEY(Campus, Year),
+ FOREIGN KEY (Campus) REFERENCES Campuses(Id)
+);\n\nCREATE TABLE "faculty" ( 
+ "Campus" INTEGER, 
+ "Year" INTEGER, 
+ "Faculty" REAL,
+ "FacultyDetails" JSON,
+ FOREIGN KEY (Campus) REFERENCES Campuses(Id) 
 );
 ```
 
-Expected output:
+Output:
 
 ```sql
-SET enable_progress_bar=true;
+DELETE FROM csu_fees
+WHERE CampusFee > 5000
+AND Year = 2021;
 ```
 
 The API endpoint provided by Interactive Session can be integrated into:

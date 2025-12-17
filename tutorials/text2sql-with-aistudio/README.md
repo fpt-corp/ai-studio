@@ -13,8 +13,6 @@ High-level pipeline:
 3. Fine-tune the model on **FPT AI Studio**
 4. Deploy and test the model using **Interactive Session**
 
----
-
 ## Fine-tune Qwen3-Coder-30B-A3B-Instruct for Text2SQL
 
 ### Upload model
@@ -51,8 +49,6 @@ model_space model upload \
 Tag this model with `chat_template: qwen3_nothink` and `base_model: Qwen3-4B-Instruct-2507`.
 
 After completion, the model will appear in **Model Hub → Private Models** and can be used for fine-tuning or inference.
-
----
 
 ### Prepare data
 
@@ -118,9 +114,7 @@ with open("text2sql_sharegpt_2000.json", "w", encoding="utf-8") as f:
 print(f"Saved {len(sharegpt_data)} samples")
 ```
 
----
-
-### Fine-tune model
+### Fine-tune Qwen3-Coder-30B-A3B-Instruct model
 
 Once we have:
 
@@ -149,9 +143,7 @@ After training completes, the fine-tuned model is saved as a **new version** in 
 You can refer to the following tutorials for guidance on the workflow and best practices for selecting and tuning hyperparameters:
 [AI Studio tutorials.](https://ai-docs.fptcloud.com/ai-studio/full-flow-usecases-the-hands-on-tutorials)
 
----
-
-### Serve model to test
+### Serve the fine-tuned model with Interactive Session
 
 The fine-tuned model can be deployed using **Interactive Session**, enabling:
 
@@ -201,7 +193,6 @@ The API endpoint provided by Interactive Session can be integrated into:
 * BI assistants
 * Data analyst chatbots
 
----
 
 ## Conclusion
 

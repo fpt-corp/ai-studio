@@ -6,27 +6,36 @@
     mkdir -p /root/miniconda3
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /root/miniconda3/miniconda.sh
     bash /root/miniconda3/miniconda.sh -b -u -p /root/miniconda3
-    rm /root/miniconda3/miniconda.sh
+    source /root/miniconda3/bin/activate
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
     ```
 - Create conda environment
     ```bash
-    source /root/miniconda3/bin/activate
+    # Install in worker node
+    srun --nodes=1 --ntasks=1 --gres=gpu:8 --pty bash
+    cd /root
     conda create -n training python==3.10 -y
     conda activate training
     conda install pip
-    pip install --upgrade pip
 
     # Setup LLaMA-Factory
     cd /root
     git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
     cd LLaMA-Factory
     pip install -e ".[torch,metrics,deepspeed,liger-kernel]" --no-build-isolation
+    pip install torch==2.8.0
+    pip install torchao==0.13.0
+    pip install torchvision==0.23.0
 
     # Install flash-attn
-    pip uninstall -y transformer-engine flash-attn && pip uninstall -y ninja && pip install ninja && pip -v install --no-cache-dir flash-attn --no-build-isolation
+    pip uninstall -y transformer-engine flash-attn && pip uninstall -y ninja && pip install ninja
+    pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp310-cp310-linux_x86_64.whl
 
     # Install huggingface-cli, for downloading dataset and model
     pip install huggingface_hub
+    
+    exit
     ```
     
 ## Prepare Dataset
@@ -43,7 +52,7 @@
     ```
 - Append this line to `dataset_info.json`
     ```json
-    "culturay_vi_5gb": {"hf_hub_url": "/mnt/jail/root/data/CulturaY_vi_5GB", "columns": {"prompt": "text"}},
+    "culturay_vi_5gb": {"hf_hub_url": "/root/data/CulturaY_vi_5GB", "columns": {"prompt": "text"}},
     ```
     
 ## Download Qwen2.5-32B model
@@ -64,7 +73,7 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
         
     ```bash
     ### model
-    model_name_or_path: /mnt/jail/root/model/Qwen/Qwen2.5-32B
+    model_name_or_path: /root/model/Qwen/Qwen2.5-32B
     trust_remote_code: true
 
     ### method
@@ -101,7 +110,7 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     bf16: true
     ddp_timeout: 180000000
     resume_from_checkpoint: null
-    flash_attn: "fa2"
+    flash_attn: "auto"
     enable_liger_kernel: true
 
     ### eval
@@ -150,14 +159,14 @@ HF_HUB_ENABLE_HF_TRANSFER=1 huggingface-cli download Qwen/Qwen2.5-32B --local-di
     export FORCE_TORCHRUN=1   
 
     srun bash -c '
-        source /mnt/jail/root/miniconda3/bin/activate
+        source /root/miniconda3/bin/activate
         conda activate training
         
         echo "Node ID: $SLURM_NODEID - Hostname: $(hostname) - Master: $MASTER_ADDR"
         
         export NODE_RANK=$SLURM_NODEID
         
-        cd /mnt/jail/root/LLaMA-Factory
+        cd /root/LLaMA-Factory
         llamafactory-cli train examples/train.yaml
     '
     ```

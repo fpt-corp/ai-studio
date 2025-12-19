@@ -1,0 +1,10 @@
+**Please write a detailed introduction to the Vietnamese dish [VN_FOOD]. The article should include:**
+
+1. **Origin and history**: Describe its origins, regional background, and any related stories or traditions.
+2. **Ingredients and preparation**: Explain the main ingredients and the distinctive cooking methods.
+3. **Flavor and tasting experience**: Describe the taste, aroma, appearance, presentation, and the overall eating experience.
+4. **Detailed nutritional composition**: List calories, protein, fat, carbohydrates, fiber, vitamins, and key minerals, and explain their nutritional benefits if possible.
+5. **Cultural or social significance**: Discuss the role of the dish in Vietnamese daily life, festivals, or customs.
+6. **Serving suggestions**: Recommend the best way to enjoy the dish, suitable accompaniments, or famous places to try it.
+
+**Please write in a lively, engaging, and approachable tone, while providing accurate nutritional information that can be used in a health consultation context or nutrition-related conversations.**

@@ -165,3 +165,7 @@ cython_debug/
 .ipynb_checkpoints
 checkpoint/*
 mlruns
+test_*
+tutorials/healthcare-and-food-chatbot-english-data-version/data/preprocessed_synthesized_data
+tutorials/healthcare-and-food-chatbot-english-data-version/data/synthesized_data
+tutorials/healthcare-and-food-chatbot-english-data-version/data/final_data_old

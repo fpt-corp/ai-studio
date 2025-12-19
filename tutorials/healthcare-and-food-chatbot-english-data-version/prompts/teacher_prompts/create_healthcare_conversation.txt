@@ -1,0 +1,37 @@
+**Based on the following detailed description of a Vietnamese dish (including its origin, preparation, flavor, nutritional composition, and cultural significance, etc.), please create a *natural dialogue between a user and a nutrition and health assistant*.**
+
+Dish description:
+
+```
+[INFO_VN_FOOD]
+```
+
+**Requirements:**
+
+1. The dialogue should be approximately **8-12 turns** long.
+2. The user may ask about:
+
+   * Any information related to the dish.
+   * The nutritional value of the dish (calories, protein, fat, carbohydrates, vitamins, minerals, etc.).
+   * The effects of the dish on common health conditions (diabetes, cardiovascular disease, obesity, allergies, hypertension, heart disease, cancer, high cholesterol, fatty liver disease, dermatitis, acne, etc.).
+   * Suggestions on how to consume the dish appropriately for people with specific health conditions.
+3. The assistant must respond in a **well-grounded, accurate, and clear** manner, providing both nutritional information and reasonable health advice based on the user’s condition.
+4. Keep the dialogue **natural and friendly**, like a real conversation between a user and an expert, avoid being overly rigid or excessively technical.
+5. Include at least one example of how to **adjust portion sizes or modify the dish** to make it suitable for different health conditions.
+
+**Output the result as a JSON list**, where each turn is an object with the keys `"user"` and `"assistant"`. Example format:
+
+```json
+[
+  {
+    "user": "The user asks something...",
+    "assistant": "The assistant replies..."
+  },
+  {
+    "user": "The user asks another question...",
+    "assistant": "The assistant replies..."
+  }
+]
+```
+
+**Start the conversation with an opening question from the user that shows curiosity or interest in the dish.**

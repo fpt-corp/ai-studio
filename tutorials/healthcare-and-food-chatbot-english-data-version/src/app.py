@@ -49,7 +49,7 @@ for message in st.session_state.messages:
 
 
 user_prompt = None
-if regular_prompt := st.chat_input("Bạn cần tư vấn gì?"):
+if regular_prompt := st.chat_input("What kind of advice do you need?"):
     user_prompt = regular_prompt
 
 if user_prompt:

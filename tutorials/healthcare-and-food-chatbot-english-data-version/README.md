@@ -43,7 +43,7 @@ VN_FOODS = [
 
 ## 2. Synthetic Data Generation with gpt-4o-mini
 
-To create a **rich conversational dataset**, we use GPT-4o-mini as a teacher model to produce dialogues around foods using food description of the previos stage, focusing on:
+To create a **rich conversational dataset**, we use GPT-4o-mini as a teacher model to produce dialogues around foods using food description of the previous stage, focusing on:
 * **Healthcare & Nutrition**: calorie info, balanced diet, ingredient substitutions
 * **Interactive Q&A**: questions about diet, allergies, health benefits
 

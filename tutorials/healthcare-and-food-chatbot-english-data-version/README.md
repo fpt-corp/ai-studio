@@ -26,8 +26,7 @@ In this step, we use **Data Hub** to easily manage training data and **Model Hub
 5. **Model Deployment**: Deploying the trained model as an API endpoint on FPT AI Studio for inference with **Interactive Session**.
 6. **Demo Application**: An interactive **chat-based application** built with **Streamlit**, allowing users to explore foods and discuss nutrition interactively.
 
-## 1. Synthetic Data Generation with gpt-4o-mini
-
+## 1. Seed data preparation
 We start with a curated list of **~50 regional foods**, along with their **non-accented Vietnamese names and English equivalents**. Next, we generate **initial food descriptions** using GPT-4o-mini. These descriptions contain key nutritional information.
 
 ```python
@@ -39,6 +38,8 @@ VN_FOODS = [
 ```
 
 * **Refer**: [create description code](./src/get_infor_vn_food.py), [create description prompt](./prompts/teacher_prompts/introduce_vn_food.txt)
+
+## 2. Synthetic Data Generation with gpt-4o-mini
 
 To create a **rich conversational dataset**, we use GPT-4o-mini as a teacher model to produce dialogues around foods using food description of the previous stage, focusing on:
 * **Healthcare & Nutrition**: calorie info, balanced diet, ingredient substitutions

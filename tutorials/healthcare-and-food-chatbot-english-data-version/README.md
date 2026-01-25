@@ -18,16 +18,14 @@ In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=qu
 ![full pipeline](./images/full-pipeline-3.png)
 
 The end-to-end pipeline for this project as shown on the above figure includes following stages:
-
-1. **Data Preparation**: Prepare a list of ~50 regional foods with basic information.
-2. **Synthetic Data Generation**: Use a teacher model (GPT-4o-mini) to create **detailed descriptions** and **healthcare-related dialogues** around each food.
-3. **Model Training**: Fine-tuning the [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) model on the synthesized dataset using **Model Fine-tuning** in **FPT AI Studio platform**. 
+1. **Synthetic Data Generation**: Prepare a list of ~50 regional foods with basic information. Use a teacher model (GPT-4o-mini) to create **detailed descriptions** and **healthcare-related dialogues** around each food.
+2. **Model Training**: Fine-tuning the [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) model on the synthesized dataset using **Model Fine-tuning** in **FPT AI Studio platform**. 
 In this step, we use **Data Hub** to easily manage training data and **Model Hub** to manage different versions of trained models.
-4. **Model Evaluation**: Assessing the performance of the fine-tuned model with **Test Jobs**.
-5. **Model Deployment**: Deploying the trained model as an API endpoint on FPT AI Studio for inference with **Interactive Session**.
-6. **Demo Application**: An interactive **chat-based application** built with **Streamlit**, allowing users to explore foods and discuss nutrition interactively.
+3. **Model Evaluation**: Assessing the performance of the fine-tuned model with **Test Jobs**.
+4. **Model Deployment**: Deploying the trained model as an API endpoint on FPT AI Studio for inference with **Interactive Session**.
+5. **Demo Application**: An interactive **chat-based application** built with **Streamlit**, allowing users to explore foods and discuss nutrition interactively.
 
-## 1. Data Preparation
+## 1. Synthetic Data Generation with gpt-4o-mini
 
 We start with a curated list of **~50 regional foods**, along with their **non-accented Vietnamese names and English equivalents**. Next, we generate **initial food descriptions** using GPT-4o-mini. These descriptions contain key nutritional information.
 
@@ -40,8 +38,6 @@ VN_FOODS = [
 ```
 
 * **Refer**: [create description code](./src/get_infor_vn_food.py), [create description prompt](./prompts/teacher_prompts/introduce_vn_food.txt)
-
-## 2. Synthetic Data Generation with gpt-4o-mini
 
 To create a **rich conversational dataset**, we use GPT-4o-mini as a teacher model to produce dialogues around foods using food description of the previous stage, focusing on:
 * **Healthcare & Nutrition**: calorie info, balanced diet, ingredient substitutions
@@ -159,7 +155,7 @@ After processing, here is a sample:
 
 * **Refer**: [synthesize_data code](./src/create_conversation.py), [process_synthesized_data code](./src/preprocess_synthesized_data.py), [split_data code](./src/split_and_merge.py), [prompt](./prompts/teacher_prompts/create_healthcare_conversation.txt)
 
-## 3. Model Training on FPT AI Studio
+## 2. Model Training on FPT AI Studio
 
 With our synthetic dataset ready, the next step was to fine-tune a smaller, more efficient model that could serve as an intelligent assistant. We fine-tuned the model using the LoRA technique.
 
@@ -242,7 +238,7 @@ With our synthetic dataset ready, the next step was to fine-tune a smaller, more
   Explanation of Costs: At **FPT AI Studio**, we charge **$2.31 per GPU-hour**. Importantly, we only charge for **actual GPU usage time** and time spent on tasks such as **model downloading, data downloading, data tokenization,** and **pushing data to the Model Hub** is **not included** in the calculation. 
 <!-- * **Step-by-step**: -->
 
-## 4. Model Evaluation
+## 3. Model Evaluation
 
 After training, the model's performance was evaluated to ensure it met the required accuracy and efficiency. We use **FPT AI Studio's Test Jobs** with NLP metrics to evaluate the model on the **test set** in order to compare the model before and after fine-tuning.
 
@@ -277,7 +273,7 @@ After training, the model's performance was evaluated to ensure it met the requi
 
 * 🧠 **Qualitative takeaway:** Overall, the fine-tuned model generates responses that are **more informative, context-aware, and suitable for healthcare-oriented dialogue**, trading some surface-level lexical similarity for improved semantic relevance and conversational naturalness.
 
-## 5. Model Deployment
+## 4. Model Deployment
 
 The fine-tuned model was deployed on **FPT AI Studio's Interactive Session**. This made the model accessible via an API endpoint, allowing our Streamlit application to send prompt. In addition, we can chat directly on the **Interactive Session** interface.
 
@@ -287,7 +283,7 @@ The fine-tuned model was deployed on **FPT AI Studio's Interactive Session**. Th
 * Live chat or get the **API endpoint**.
 ![interactive_session-0](./images/is_1.png)
 
-## 6. Demo Application
+## 5. Demo Application
 
 The final piece of the project is the Streamlit dashboard, which provides a user-friendly interface for talking directly to my assistant.
 

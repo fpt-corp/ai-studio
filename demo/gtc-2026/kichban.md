@@ -18,9 +18,9 @@
 4. Thực hiện fine-tune và inference trên Large Language Model
 
 **Điểm Nổi Bật:**
-- ✅ Môi trường phát triển sẵn sàng sử dụng ngay lập tức
-- ✅ Hỗ trợ nhiều mục đích sử dụng: coding, huấn luyện, model serving
-- ✅ Giá cạnh tranh so với các nhà cung cấp khác
+- Môi trường phát triển sẵn sàng sử dụng ngay lập tức
+- Hỗ trợ nhiều mục đích sử dụng: coding, huấn luyện, model serving
+- Giá cạnh tranh so với các nhà cung cấp khác
 
 **Công Nghệ NVIDIA:** GPU Operator, NVLink, DCGM
 

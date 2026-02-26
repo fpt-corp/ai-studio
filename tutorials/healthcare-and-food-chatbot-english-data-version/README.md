@@ -18,7 +18,6 @@ In addition, **[Model Hub](https://fptcloud.com/en/documents/model-hub-2/?doc=qu
 ![full pipeline](./images/full-pipeline-3.png)
 
 The end-to-end pipeline for this project as shown on the above figure includes following stages:
-
 1. **Data Preparation**: Prepare a list of ~50 regional foods with basic information.
 2. **Synthetic Data Generation**: Use a teacher model (GPT-4o-mini) to create **detailed descriptions** and **healthcare-related dialogues** around each food.
 3. **Model Training**: Fine-tuning the [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) model on the synthesized dataset using **Model Fine-tuning** in **FPT AI Studio platform**. 
@@ -27,8 +26,7 @@ In this step, we use **Data Hub** to easily manage training data and **Model Hub
 5. **Model Deployment**: Deploying the trained model as an API endpoint on FPT AI Studio for inference with **Interactive Session**.
 6. **Demo Application**: An interactive **chat-based application** built with **Streamlit**, allowing users to explore foods and discuss nutrition interactively.
 
-## 1. Data Preparation
-
+## 1. Seed data preparation
 We start with a curated list of **~50 regional foods**, along with their **non-accented Vietnamese names and English equivalents**. Next, we generate **initial food descriptions** using GPT-4o-mini. These descriptions contain key nutritional information.
 
 ```python
@@ -159,7 +157,7 @@ After processing, here is a sample:
 
 * **Refer**: [synthesize_data code](./src/create_conversation.py), [process_synthesized_data code](./src/preprocess_synthesized_data.py), [split_data code](./src/split_and_merge.py), [prompt](./prompts/teacher_prompts/create_healthcare_conversation.txt)
 
-## 3. Model Training on FPT AI Studio
+## 3. Model Finetuning on FPT AI Studio
 
 With our synthetic dataset ready, the next step was to fine-tune a smaller, more efficient model that could serve as an intelligent assistant. We fine-tuned the model using the LoRA technique.
 

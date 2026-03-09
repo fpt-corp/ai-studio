@@ -1,8 +1,18 @@
 # Nvidia GTC 2026 - FPT Smartcloud Booth
 
 ---
+## Demo 1: AIStudio - Quay video trước / demo trực tiếp
+**Tên Sản Phẩm:** AIStudio
 
-## Demo 1: Máy Ảo GPU - Giải Pháp Phát Triển Ứng Dụng AI Linh Hoạt
+**Kịch Bản Thực Hiện:**
+Sử dụng kịch bản tutorial health care chatbot - BYOAI
+
+**Điểm Nổi Bật:**
+- Node-code environment cho finetune/evaluate/manage AI model
+- PAYG, chỉ tính tiền trên thời gian training
+
+
+## Demo 2: Máy Ảo GPU - Giải Pháp Phát Triển Ứng Dụng AI Linh Hoạt
 
 **Tên Sản Phẩm:** GPU Virtual Machine
 
@@ -14,8 +24,8 @@
 **Kịch Bản Thực Hiện:**
 1. Tạo máy ảo GPU với các cấu hình khác nhau (1, 2, 8 GPUs)
 2. Hiển thị thông tin GPU và hiệu năng (nvidia-smi, nvidia-smi topo -m cho hệ thống 8 GPUs)
-3. Khởi động JupyterLab và chạy mô hình AI thực tế
-4. Thực hiện fine-tune và inference trên Large Language Model
+3. Khởi động JupyterLab và cài pytorch
+4. Check pytorch cuda available
 
 **Điểm Nổi Bật:**
 - Môi trường phát triển sẵn sàng sử dụng ngay lập tức
@@ -26,7 +36,7 @@
 
 ---
 
-## Demo 2: GPU Cluster - Giải Pháp Huấn Luyện AI Quy Mô Lớn
+## Demo 3: GPU Cluster - Giải Pháp Huấn Luyện AI Quy Mô Lớn -> Chuẩn bị sẵn và quay video
 
 **Tên Sản Phẩm:** Kubernetes + GPU + SLURM (Managed Compute Cluster)
 
@@ -53,14 +63,14 @@
 
 ---
 
-## Demo 3: Model as a Service - AI Marketplace
+## Demo 4: FPT flagship model for Layout, table analysis
 
-**Tên Sản Phẩm:** Model as a Service (MaaS)
+**Tên Sản Phẩm:** Enterprise LLM model, Model as a Service (MaaS)
 
 **Giá Trị Kinh Doanh:**
+- Flagship Model do FPT phát triển TỪ ĐẦU (pretrain -> finetune), độ chính xác vượt trội trên các usecase đặc thù: OCR, layout analysis, table parsing
 - Tích hợp nhanh chóng các mô hình AI phù hợp vào ứng dụng mà không cần đầu tư hạ tầng, tự serving
 - Giá cạnh tranh và đáng tin cậy so với các nhà cung cấp dịch vụ mô hình (ví dụ: OpenAI)
-- Khả năng mở rộng tự động cho phép xử lý nhu cầu tăng đột ngột
 
 **Kịch Bản Thực Hiện:**
 1. Lựa chọn mô hình phù hợp từ FPT AI Marketplace cho các ứng dụng phổ biến (RAG, AI Agent, v.v.):
@@ -71,9 +81,29 @@
 4. Trình bày chi tiết sử dụng token, chi phí thực tế và so sánh với các dịch vụ cạnh tranh
 
 **Điểm Nổi Bật:**
+- Flagship model độ chính xác vượt trội
 - Tích hợp nhanh chóng, linh hoạt (Plug and Play)
 - Cho phép lựa chọn mô hình phù hợp cho từng ứng dụng hoặc AI Agent
 - Giá cạnh tranh và tính toán chi phí minh bạch
 - Độ tin cậy cao và mở rộng quy mô tự động
 
 **Công Nghệ NVIDIA:** Model optimization, CUDA
+
+## Demo 5: Enterprise tenant
+**Tên Sản Phẩm:** FPT AI Factory - FPT Cloud console
+
+**Giá Trị Kinh Doanh:**
+- Quản lý resource AI dễ dàng, chuyên nghiệp
+- Dễ dàng mở rộng
+
+**Kịch Bản Thực Hiện:**
+1. Show 1 tenant trên console.fptcloud.com với nhiều resource: VPC, BM, VM, subnet, user..., show dashboard quản lý tổng quan tenant/vpc
+2. Show Dashboard monitor resource tổng quan, dashboard chi tiết của server (optional)
+3. Show Dashboard monitor workload k8s: nodes, pods, network...
+
+**Điểm Nổi Bật:**
+- Cung cấp nhiều loại resource, CPU, GPU, high-end GPU, đáp ứng đa dạng nhu cầu, nhiều quy mô, từ nhỏ đến lớn, dễ dàng mở rộng
+- Dễ dàng tạo và quản lý resource
+- Builtin monitoring, logging
+
+**Công Nghệ NVIDIA:** DCGM, HGX cluster

@@ -63,7 +63,7 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 
 ---
 
-## Demo 4: FPT flagship model for Layout, table analysis
+## Demo 4: Model as a service, FPT Flagship model for document QA and parsing
 
 **Tên Sản Phẩm:** Enterprise LLM model, Model as a Service (MaaS)
 
@@ -73,12 +73,15 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 - Giá cạnh tranh và đáng tin cậy so với các nhà cung cấp dịch vụ mô hình (ví dụ: OpenAI)
 
 **Kịch Bản Thực Hiện:**
-1. Lựa chọn mô hình phù hợp từ FPT AI Marketplace cho các ứng dụng phổ biến (RAG, AI Agent, v.v.):
-1.1. Sử dụng model Qwen3 coder cho devops agent (OpenClaw) hỗ trợ check cụm issue trong cụm k8s...
-2.2. Sử dụng model GLM 4.7 cho chat with pdf RAG app
-2. Lấy API key và endpoint từ hệ thống
-3. Tích hợp vào ứng dụng và kiểm tra hoạt động
-4. Trình bày chi tiết sử dụng token, chi phí thực tế và so sánh với các dịch vụ cạnh tranh
+1. Show giao diện marketplace
+- Trang chủ
+- Danh sách model với đa dạng model Opensource
+- Có cả các model do FPT tự phát triển với độ chính xác vượt trội: show model latest
+2. Show kết quả đánh giá mô hình do FPT tự phát triển (lấy từ slide .pptx)
+3. App demo: UI show input và output
+    - Input: là file PDF ảnh
+    - Output: Text chunk đã được trích xuất
+    - Highlights: Trích xuất dữ liệu trên bảng, tự động mô tả biểu đồ
 
 **Điểm Nổi Bật:**
 - Flagship model độ chính xác vượt trội
@@ -88,6 +91,7 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 - Độ tin cậy cao và mở rộng quy mô tự động
 
 **Công Nghệ NVIDIA:** Model optimization, CUDA
+
 
 ## Demo 5: Enterprise tenant
 **Tên Sản Phẩm:** FPT AI Factory - FPT Cloud console

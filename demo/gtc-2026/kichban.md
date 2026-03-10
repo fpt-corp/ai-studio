@@ -61,8 +61,6 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 
 **Công Nghệ NVIDIA:** GPU Operator, InfiniBand, DCGM
 
----
-
 ## Demo 4: Model as a service, FPT Flagship model for document QA and parsing
 
 **Tên Sản Phẩm:** Enterprise LLM model, Model as a Service (MaaS)

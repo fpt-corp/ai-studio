@@ -74,9 +74,9 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 
 **Kịch Bản Thực Hiện:**
 1. Show giao diện marketplace
-- Trang chủ
-- Danh sách model với đa dạng model Opensource
-- Có cả các model do FPT tự phát triển với độ chính xác vượt trội: show model latest
+    - Trang chủ
+    - Danh sách model với đa dạng model Opensource
+    - Có cả các model do FPT tự phát triển với độ chính xác vượt trội: show model latest
 2. Show kết quả đánh giá mô hình do FPT tự phát triển (lấy từ slide .pptx)
 3. App demo: UI show input và output
     - Input: là file PDF ảnh

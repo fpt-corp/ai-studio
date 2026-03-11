@@ -31,8 +31,8 @@ srun bash -c '
     --master_addr='"${MASTER_ADDR}"' \
     --master_port='"${MASTER_PORT}"' \
     ddp_demo.py \
-    --epochs 1 \
-    --batch-size 64 \
+    --epochs 5 \
+    --batch-size 128 \
     --max-train-samples 8000 \
     --max-test-samples 2000
 '

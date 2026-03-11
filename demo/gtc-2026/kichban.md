@@ -49,8 +49,29 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 **Kịch Bản Thực Hiện:**
 1. Trình bày cụm Kubernetes + SLURM đã chuẩn bị (4 nodes với môi trường đầy đủ)
 2. Quản lý cụm thông qua FPT Cloud Console và Lens dashboard
-3. Gửi và giám sát các công việc huấn luyện trên 2 nodes
-4. Chạy nhiều công việc huấn luyện song song
+3. Truy cập vào Slurm login node qua ssh: `ssh root@161.248.3.119`
+3. Chạy thử các lệnh Slurm để kiểm tra thông tin hệ thống:
+   - `sinfo` (xem partition và trạng thái node)
+   - `sinfo -N -l` (xem chi tiết từng node)
+   - `scontrol show nodes` (xem cấu hình và tài nguyên node)
+   - `squeue` (xem hàng đợi job hiện tại)
+   - `squeue -u $USER` (lọc job của user đang demo)
+   - `sacct -S today` (xem lịch sử job trong ngày)
+   - `srun --pty -N1 -n1 bash` (chạy interactive session để kiểm tra nhanh môi trường)
+   - `srun --pty -N1 -n1 nvidia-smi` (chạy session không có GPU)
+  - `srun --pty -N1 -n1 --gres=gpu:1 nvidia-smi` (chạy session có 1 GPU)
+4. Chạy job training PyTorch đơn giản trên 2 nodes:
+   - Clone source code: `git clone  https://github.com/fpt-corp/ai-studio.git`
+   - Di chuyển tới thư mục GTC demo 3: `cd /root/ai-studio/demo/gtc-2026/demo3` 
+   - Script training DDP mẫu: [demo3/ddp_demo.py](demo3/ddp_demo.py)
+   - Script submit Slurm: [demo3/pt-2node.sbatch](demo3/pt-2node.sbatch)
+   - Submit job và tự lấy `job_id`:
+     - `JOB_TRAIN=$(sbatch --parsable pt-2node.sbatch)`
+   - Theo dõi nhanh:
+     - `echo "JOB_TRAIN=$JOB_TRAIN"`
+     - `squeue -j $JOB_TRAIN` (xác nhận `PD`/`R`)
+     - `scontrol show job $JOB_TRAIN` (kiểm tra node phân bổ)
+     - `tail -f slurm-$JOB_TRAIN.out` (xem output train từ 2 nodes)
 5. Hiển thị danh sách công việc và tình trạng giám sát trên hệ thống Fmon
 
 **Điểm Nổi Bật:**

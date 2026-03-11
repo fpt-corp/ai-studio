@@ -64,7 +64,10 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
    - Clone source code: `git clone  https://github.com/fpt-corp/ai-studio.git`
    - Di chuyển tới thư mục GTC demo 3: `cd /root/ai-studio/demo/gtc-2026/demo3` 
    - Script training DDP mẫu: [demo3/ddp_demo.py](demo3/ddp_demo.py)
+   - Script setup môi trường bằng uv: [demo3/setup_env_uv.sh](demo3/setup_env_uv.sh)
    - Script submit Slurm: [demo3/pt-2node.sbatch](demo3/pt-2node.sbatch)
+   - Setup môi trường chạy:
+     - `bash setup_env_uv.sh`
    - Submit job và tự lấy `job_id`:
      - `JOB_TRAIN=$(sbatch --parsable pt-2node.sbatch)`
    - Theo dõi nhanh:

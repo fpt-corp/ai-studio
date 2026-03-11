@@ -9,7 +9,7 @@ set -euo pipefail
 
 MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n1)
 
-torchrun \
+./.venv/bin/torchrun \
   --nnodes=2 \
   --nproc-per-node=1 \
   --node-rank="$SLURM_NODEID" \

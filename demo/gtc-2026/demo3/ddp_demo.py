@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 
 import torch
 import torch.distributed as dist
@@ -116,6 +117,7 @@ def main() -> None:
         )
 
     for epoch in range(args.epochs):
+        epoch_start = time.perf_counter()
         ddp_model.train()
         train_sampler.set_epoch(epoch)
         total_loss = 0.0
@@ -155,11 +157,13 @@ def main() -> None:
 
         sum_eval_correct, sum_eval_samples = reduce_metric(float(eval_correct), eval_samples, device)
         eval_acc = sum_eval_correct / max(sum_eval_samples, 1)
+        epoch_time = time.perf_counter() - epoch_start
 
         if rank == 0:
             print(
                 f"[Epoch {epoch + 1}/{args.epochs}] train_loss={train_loss:.4f} "
-                f"train_acc={train_acc:.4f} eval_acc={eval_acc:.4f}",
+                f"train_acc={train_acc:.4f} eval_acc={eval_acc:.4f} "
+                f"epoch_time={epoch_time:.2f}s",
                 flush=True,
             )
 

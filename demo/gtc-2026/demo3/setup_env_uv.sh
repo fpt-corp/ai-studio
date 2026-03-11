@@ -1,11 +1,29 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-run_setup() {
+install_uv_if_missing() {
+  if command -v uv >/dev/null 2>&1; then
+    return 0
+  fi
+
+  echo "uv not found. Installing uv..."
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  if [[ -f "${HOME}/.local/bin/env" ]]; then
+    # shellcheck disable=SC1091
+    source "${HOME}/.local/bin/env"
+  fi
+
+  export PATH="${HOME}/.local/bin:${PATH}"
+
   if ! command -v uv >/dev/null 2>&1; then
-    echo "uv is not installed. Install uv first: https://docs.astral.sh/uv/getting-started/installation/" >&2
+    echo "Failed to install uv automatically." >&2
     exit 1
   fi
+}
+
+run_setup() {
+  install_uv_if_missing
 
   VENV_DIR=".venv"
   PYTHON_BIN="${VENV_DIR}/bin/python"
@@ -39,6 +57,8 @@ if ! command -v srun >/dev/null 2>&1; then
   echo "srun is not available. Run this script from a Slurm login node." >&2
   exit 1
 fi
+
+install_uv_if_missing
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "Allocating worker node and setting up environment with uv..."

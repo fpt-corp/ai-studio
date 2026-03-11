@@ -4,6 +4,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
 #SBATCH --output=slurm-%j.out
+#SBATCH --error=training_%j.err
 
 set -euo pipefail
 

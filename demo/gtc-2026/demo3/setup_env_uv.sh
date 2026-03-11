@@ -37,11 +37,11 @@ run_setup() {
 
   # Optional override for CUDA-specific wheels, example:
   # export TORCH_INDEX_URL=https://download.pytorch.org/whl/cu124
-  if [[ -n "${TORCH_INDEX_URL:-}" ]]; then
-    uv pip install --index-url "${TORCH_INDEX_URL}" torch
-  else
-    uv pip install torch
-  fi
+if [[ -n "${TORCH_INDEX_URL:-}" ]]; then
+  uv pip install --index-url "${TORCH_INDEX_URL}" torch torchvision
+else
+  uv pip install torch torchvision
+fi
 
   "${PYTHON_BIN}" -c 'import torch; print("torch", torch.__version__); print("cuda", torch.cuda.is_available())'
 

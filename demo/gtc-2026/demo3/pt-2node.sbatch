@@ -22,10 +22,9 @@ NPROC_PER_NODE=2
 
 echo "MASTER_NODE=${MASTER_NODE} MASTER_ADDR=${MASTER_ADDR} NNODES=${NNODES} NPROC_PER_NODE=${NPROC_PER_NODE} SCRIPT_DIR=${SCRIPT_DIR}"
 
-srun --ntasks="${NNODES}" --ntasks-per-node=1 bash -c '
-  cd "'"${SCRIPT_DIR}"'"
+srun bash -c '
   echo "task_procid=$SLURM_PROCID nodeid=$SLURM_NODEID host=$(hostname)"
-  ./.venv/bin/torchrun \
+  /root/ai-studio/demo/gtc-2026/demo3/.venv/bin/torchrun \
     --nnodes='"${NNODES}"' \
     --nproc-per-node='"${NPROC_PER_NODE}"' \
     --node-rank=$SLURM_PROCID \

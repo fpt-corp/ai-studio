@@ -10,19 +10,27 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MASTER_ADDR="$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n1)"
+MASTER_NODE="$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n1)"
+MASTER_ADDR="$(
+  srun --nodes=1 --ntasks=1 -w "${MASTER_NODE}" hostname --ip-address \
+    | awk '{for(i=1;i<=NF;i++) if ($i !~ /^127\\./) {print $i; exit}}'
+)"
+if [[ -z "${MASTER_ADDR}" ]]; then
+  MASTER_ADDR="${MASTER_NODE}"
+fi
 MASTER_PORT=29500
 NNODES="${SLURM_NNODES}"
 NPROC_PER_NODE=2
 
-echo "MASTER_ADDR=${MASTER_ADDR} NNODES=${NNODES} NPROC_PER_NODE=${NPROC_PER_NODE} SCRIPT_DIR=${SCRIPT_DIR}"
+echo "MASTER_NODE=${MASTER_NODE} MASTER_ADDR=${MASTER_ADDR} NNODES=${NNODES} NPROC_PER_NODE=${NPROC_PER_NODE} SCRIPT_DIR=${SCRIPT_DIR}"
 
 srun --ntasks="${NNODES}" --ntasks-per-node=1 bash -c '
   cd "'"${SCRIPT_DIR}"'"
+  echo "task_procid=$SLURM_PROCID nodeid=$SLURM_NODEID host=$(hostname)"
   ./.venv/bin/torchrun \
     --nnodes='"${NNODES}"' \
     --nproc-per-node='"${NPROC_PER_NODE}"' \
-    --node-rank=$SLURM_NODEID \
+    --node-rank=$SLURM_PROCID \
     --master_addr='"${MASTER_ADDR}"' \
     --master_port='"${MASTER_PORT}"' \
     ddp_demo.py \

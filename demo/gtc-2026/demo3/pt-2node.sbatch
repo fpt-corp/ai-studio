@@ -3,8 +3,9 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:2
+#SBATCH --cpus-per-task=8
 #SBATCH --output=slurm-%j.out
-#SBATCH --error=training_%j.err
+#SBATCH --error=slurm-%j.err
 
 set -euo pipefail
 
@@ -14,7 +15,7 @@ MASTER_PORT=29500
 NNODES="${SLURM_NNODES}"
 NPROC_PER_NODE=2
 
-echo "MASTER_ADDR=${MASTER_ADDR} NNODES=${NNODES} NPROC_PER_NODE=${NPROC_PER_NODE}"
+echo "MASTER_ADDR=${MASTER_ADDR} NNODES=${NNODES} NPROC_PER_NODE=${NPROC_PER_NODE} SCRIPT_DIR=${SCRIPT_DIR}"
 
 srun --ntasks="${NNODES}" --ntasks-per-node=1 bash -c '
   cd "'"${SCRIPT_DIR}"'"
@@ -24,5 +25,9 @@ srun --ntasks="${NNODES}" --ntasks-per-node=1 bash -c '
     --node-rank=$SLURM_NODEID \
     --master_addr='"${MASTER_ADDR}"' \
     --master_port='"${MASTER_PORT}"' \
-    ddp_demo.py
+    ddp_demo.py \
+    --epochs 1 \
+    --batch-size 64 \
+    --max-train-samples 8000 \
+    --max-test-samples 2000
 '

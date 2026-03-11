@@ -23,7 +23,7 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
 
 **Kịch Bản Thực Hiện:**
 1. Tạo máy ảo GPU với các cấu hình khác nhau (1, 2, 8 GPUs)
-2. Hiển thị thông tin GPU và hiệu năng (nvidia-smi, nvidia-smi topo -m cho hệ thống 8 GPUs)
+2. Hiển thị thông tin GPU và hiệu năng (`nvidia-smi`, `nvidia-smi topo -m` cho hệ thống 8 GPUs)
 3. Khởi động JupyterLab và cài pytorch
 4. Check pytorch cuda available
 
@@ -60,10 +60,10 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
    - `srun --pty -N1 -n1 bash` (chạy interactive session để kiểm tra nhanh môi trường)
    - `srun --pty -N1 -n1 nvidia-smi` (chạy session không có GPU)
   - `srun --pty -N1 -n1 --gres=gpu:1 nvidia-smi` (chạy session có 1 GPU)
-4. Chạy job PyTorch Distributed Training theo tutorial (DDP) trên 2 nodes (mỗi node 2 GPU):
+4. Chạy job PyTorch Distributed Training thật cho model pretrained ResNet50 (fine-tune head trên MNIST) theo tutorial DDP trên 2 nodes (mỗi node 2 GPU):
    - Clone source code: `git clone  https://github.com/fpt-corp/ai-studio.git`
    - Di chuyển tới thư mục GTC demo 3: `cd /root/ai-studio/demo/gtc-2026/demo3` 
-   - Script training theo PyTorch Distributed tutorial (DDP): [demo3/ddp_demo.py](demo3/ddp_demo.py)
+   - Script training theo PyTorch Distributed tutorial (DDP): [demo3/ddp_demo.py](demo3/ddp_demo.py) (pretrained ResNet50 + MNIST)
    - Script setup môi trường bằng uv: [demo3/setup_env_uv.sh](demo3/setup_env_uv.sh)
    - Script submit Slurm (2 nodes x 2 GPU/node): [demo3/pt-2node.sbatch](demo3/pt-2node.sbatch)
    - Setup môi trường chạy:
@@ -74,7 +74,7 @@ Sử dụng kịch bản tutorial health care chatbot - BYOAI
      - `echo "JOB_TRAIN=$JOB_TRAIN"`
      - `squeue -j $JOB_TRAIN` (xác nhận `PD`/`R`)
      - `scontrol show job $JOB_TRAIN` (kiểm tra node phân bổ)
-     - `tail -f slurm-$JOB_TRAIN.out` (xem log train DDP: `rank=0..3`, host, loss, avg_loss)
+     - `tail -f slurm-$JOB_TRAIN.out` (xem log train DDP: `world_size=4`, `train_loss`, `train_acc`, `eval_acc`)
 5. Hiển thị danh sách công việc và tình trạng giám sát trên hệ thống Fmon
 
 **Điểm Nổi Bật:**
